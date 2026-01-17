@@ -28,19 +28,15 @@ export const NAV_LINKS: SocialLink[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: 'https://github.com',
+    href: 'https://pump.fun/coin/J8ejmLRkj3uni4nKjuh2hGtXDKKdJHVxb4JCN8WUpump',
     label: 'GitHub',
   },
   {
-    href: 'https://twitter.com',
+    href: 'https://pump.fun/coin/J8ejmLRkj3uni4nKjuh2hGtXDKKdJHVxb4JCN8WUpump',
     label: 'Twitter',
   },
   {
     href: 'https://pump.fun/coin/J8ejmLRkj3uni4nKjuh2hGtXDKKdJHVxb4JCN8WUpump',
-    label: 'Pump.fun',
-  },
-  {
-    href: '/rss.xml',
     label: 'RSS',
   },
 ]
