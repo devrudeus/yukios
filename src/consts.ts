@@ -36,7 +36,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Twitter',
   },
   {
-    href: 'https://pump.fun',
+    href: 'https://pump.fun/coin/J8ejmLRkj3uni4nKjuh2hGtXDKKdJHVxb4JCN8WUpump',
     label: 'Pump.fun',
   },
   {
