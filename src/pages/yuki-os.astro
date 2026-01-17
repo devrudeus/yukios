@@ -2433,14 +2433,14 @@ Coming Soon:
     const colors = {
       user: 'text-cyan-400',
       system: 'text-yellow-400',
-      kimi: 'text-purple-400',
+      yuki: 'text-purple-400',
       error: 'text-red-400',
     }
 
     const prefix = {
       user: 'yuki@Yuki OS:~$',
       system: '[SYSTEM]',
-      kimi: '[KIMI💜]',
+      yuki: '[YUKI💜]',
       error: '[ERROR]',
     }
 
@@ -2476,12 +2476,12 @@ Coming Soon:
     }
 
     // About Yuki OS
-    if (['kimios', 'kimi os', 'what is this', 'apa itu yukios', 'about yukios'].some(k => lower.includes(k))) {
-      return getRandomResponse('kimios')
+    if (['yukios', 'yuki os', 'what is this', 'apa itu yukios', 'about yukios'].some(k => lower.includes(k))) {
+      return getRandomResponse('yukios')
     }
 
     // Token info
-    if (['token', 'yukios token', '$kimios', 'coin', 'tokenomics', 'supply'].some(k => lower.includes(k))) {
+    if (['token', 'yukios token', '$yukios', 'coin', 'tokenomics', 'supply'].some(k => lower.includes(k))) {
       return getRandomResponse('token')
     }
 
