@@ -1,0 +1,2834 @@
+---
+import PageHead from '@/components/PageHead.astro'
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout>
+  <PageHead slot="head" title="Yuki OS - The Kawaii Cyberdeck Interface" />
+
+  <!-- Boot Sequence Screen -->
+  <div id="boot-screen" class="fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-500">
+    <div class="terminal-boot font-mono text-green-400 text-sm md:text-base p-8 max-w-3xl w-full">
+      <div class="mb-6 text-center">
+        <div class="mb-4 flex justify-center">
+          <img src="/LOGO.png" alt="Yuki OS Logo" class="logo-boot" />
+        </div>
+        <div class="text-xl md:text-2xl font-bold text-purple-400 mb-2">Yuki OS</div>
+        <div class="text-xs text-cyan-400">v1.0.0 - Kawaii Cyberdeck Edition</div>
+      </div>
+      <div class="space-y-2">
+        <div class="boot-line">> INITIATING SYSTEM BOOT...</div>
+        <div class="boot-line delay-200">> MOUNTING SOLANA DRIVE... <span class="text-cyan-400 font-bold">[OK]</span></div>
+        <div class="boot-line delay-400">> LOADING KAWAII_HACKER_MODULES... <span class="text-cyan-400 font-bold">[SUCCESS]</span></div>
+        <div class="boot-line delay-600">> SYNCHRONIZING WITH BLOCKCHAIN... <span class="text-yellow-400">[SYNCED]</span></div>
+        <div class="boot-line delay-800">> INITIALIZING YUKIOS INTERFACE... <span class="text-green-400 font-bold">[READY]</span></div>
+        <div class="boot-line delay-1000 mt-4 text-center text-lg">> <span class="text-purple-400 font-bold">WELCOME TO YUKIOS.</span> <span class="text-pink-400">🚀</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Interface -->
+  <div id="desktop" class="min-h-screen bg-black opacity-0 transition-opacity duration-1000">
+
+    <!-- Animated Background (No Video) -->
+    <div class="relative min-h-screen flex flex-col">
+      <!-- Cyberpunk Grid Background -->
+      <div class="fixed inset-0 z-0">
+        <!-- Animated gradient background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-purple-950/20 to-black"></div>
+
+        <!-- Animated grid overlay -->
+        <div class="absolute inset-0 cinematic-grid-bg opacity-30"></div>
+
+        <!-- Scanline effect -->
+        <div class="absolute inset-0 cinematic-scanlines opacity-20"></div>
+
+        <!-- Floating orbs -->
+        <div class="absolute top-20 left-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 4s;"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 5s; animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-3xl animate-pulse" style="animation-duration: 6s; animation-delay: 2s;"></div>
+
+        <!-- Holographic lines -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="absolute w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent top-1/4 animate-pulse" style="animation-duration: 3s;"></div>
+          <div class="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent top-2/4 animate-pulse" style="animation-duration: 4s; animation-delay: 1s;"></div>
+          <div class="absolute w-full h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent top-3/4 animate-pulse" style="animation-duration: 3.5s; animation-delay: 0.5s;"></div>
+        </div>
+
+        <!-- Corner accents -->
+        <div class="absolute top-0 left-0 w-64 h-64 border-l-2 border-t-2 border-purple-500/30"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 border-r-2 border-t-2 border-cyan-500/30"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 border-l-2 border-b-2 border-pink-500/30"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 border-r-2 border-b-2 border-green-500/30"></div>
+      </div>
+
+      <!-- Desktop Header Section -->
+      <div class="relative z-10 pt-8 pb-12">
+        <div class="container mx-auto px-4 text-center">
+          <div class="mb-8 flex justify-center">
+            <img
+              src="/LOGO.png"
+              alt="Yuki OS Logo"
+              class="w-24 h-24 md:w-32 md:h-32 object-contain cinematic-float"
+              style="filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8)) drop-shadow(0 0 40px rgba(236, 72, 153, 0.6));"
+            />
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent cinematic-neon-pulse">
+            Yuki OS Desktop Environment
+          </h1>
+          <p class="text-cyan-400 font-mono text-sm md:text-base mb-2">
+            v1.0.0 - Kawaii Cyberdeck Edition
+          </p>
+          <p class="text-gray-400 text-xs md:text-sm max-w-2xl mx-auto">
+            Interact with the retro-cyber interface. Click any icon to launch applications. 🚀
+          </p>
+        </div>
+      </div>
+
+      <!-- Desktop Icons Grid - Center Layout -->
+      <div class="relative z-10 py-12 flex-1">
+        <div class="container mx-auto px-4">
+          <div class="flex justify-center">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 max-w-3xl">
+              <!-- My Documents Icon -->
+              <button class="desktop-icon group" data-window="documents">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">📁</div>
+                  <div class="icon-label">My Documents</div>
+                </div>
+              </button>
+
+              <!-- Task Manager Icon -->
+              <button class="desktop-icon group" data-window="taskmanager">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">📈</div>
+                  <div class="icon-label">Task Manager</div>
+                </div>
+              </button>
+
+              <!-- Netscape Navigator Icon -->
+              <button class="desktop-icon group" data-window="netscape">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">🌐</div>
+                  <div class="icon-label">Netscape</div>
+                </div>
+              </button>
+
+              <!-- Launch Pump.exe Icon -->
+              <button class="desktop-icon group" data-window="pump">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform animate-pulse">🚀</div>
+                  <div class="icon-label text-yellow-300 font-bold">PUMP.EXE</div>
+                </div>
+              </button>
+
+              <!-- Yuki Terminal Icon -->
+              <button class="desktop-icon group" data-window="terminal">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">💻</div>
+                  <div class="icon-label text-green-400 font-bold">Yuki Terminal</div>
+                </div>
+              </button>
+
+              <!-- Calculator Icon -->
+              <button class="desktop-icon group" data-window="calculator">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">🔢</div>
+                  <div class="icon-label">Calculator</div>
+                </div>
+              </button>
+
+              <!-- Paint Icon -->
+              <button class="desktop-icon group" data-window="paint">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">🎨</div>
+                  <div class="icon-label text-pink-400">Yuki Paint</div>
+                </div>
+              </button>
+
+              <!-- Notepad Icon -->
+              <button class="desktop-icon group" data-window="notepad">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">📝</div>
+                  <div class="icon-label text-blue-400">Notepad++</div>
+                </div>
+              </button>
+
+              <!-- Settings Icon -->
+              <button class="desktop-icon group" data-window="settings">
+                <div class="icon-wrapper">
+                  <div class="text-4xl md:text-5xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">⚙️</div>
+                  <div class="icon-label text-gray-300">Settings</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windows Container -->
+    <div id="windows-container" class="fixed inset-0 z-50 pointer-events-none">
+
+      <!-- My Documents Window -->
+      <div id="window-documents" class="window-95 draggable hidden pointer-events-auto" style="top: 8%; left: 50%; transform: translateX(-50%); width: 650px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-purple-600 to-pink-500 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>📄</span>
+            <span class="font-bold text-white text-sm">ReadMe_First.txt - Notepad</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="documents" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="documents" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="documents" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-white text-black p-6 font-mono text-sm overflow-y-auto" style="max-height: 70vh;">
+          <div class="mb-4 text-xs text-gray-500">File    Edit    View    Help</div>
+          <hr class="mb-4 border-gray-300">
+          <div class="space-y-4">
+            <p><strong>Subject: Why I built this.</strong></p>
+            <p>I was tired of the old system that was slow and boring.</p>
+            <p>I spent <span class="text-purple-600 font-bold">72 hours without sleep</span>, accompanied only by energy drinks and green code on my monitor screen, to build Yuki OS.</p>
+            <p>This is <span class="text-pink-500 font-bold">the ultimate operating system on Solana</span>.</p>
+            <p>Built for <span class="text-cyan-600">speed</span>, <span class="text-cyan-600">efficiency</span>, and <span class="text-cyan-600">maximum aesthetics</span>.</p>
+            <p class="mt-6 text-purple-600 font-bold">It's time to upgrade your wallet.</p>
+            <p class="mt-4 text-right">- Yuki, Lead Dev.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Manager Window -->
+      <div id="window-taskmanager" class="window-95 draggable hidden pointer-events-auto" style="top: 10%; left: 50%; transform: translateX(-50%); width: 700px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-cyan-600 to-blue-500 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>📊</span>
+            <span class="font-bold text-white text-sm">System Monitor - Task Manager</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="taskmanager" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="taskmanager" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="taskmanager" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-gray-900 text-green-400 p-6 font-mono text-sm overflow-y-auto" style="max-height: 70vh;">
+          <div class="mb-4 text-cyan-400 text-lg font-bold">═══ SYSTEM RESOURCES ═══</div>
+          <div class="space-y-3">
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-400">Ticker:</span>
+              <span class="text-pink-400 font-bold">$YUKIOS</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-400">Total Supply:</span>
+              <span class="text-cyan-400">1,000,000,000</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-400">Tax Protocol:</span>
+              <span class="text-green-400">0% Buy / 0% Sell</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-400">Liquidity Status:</span>
+              <span class="text-orange-400">🔥 BURNED (Locked Forever)</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-400">Mint Authority:</span>
+              <span class="text-red-400">REVOKED 🚫</span>
+            </div>
+            <div class="flex justify-between pt-4">
+              <span class="text-gray-400">System Status:</span>
+              <span class="text-green-400 font-bold animate-pulse">✓ OPTIMAL & READY TO PUMP</span>
+            </div>
+          </div>
+          <!-- Resource Bars -->
+          <div class="mt-6 space-y-4">
+            <div>
+              <div class="text-xs text-gray-400 mb-1">CPU Usage (Hype Level)</div>
+              <div class="w-full bg-gray-700 h-4 rounded overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-cyan-500 h-full animate-pulse" style="width: 87%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">Memory (Community Energy)</div>
+              <div class="w-full bg-gray-700 h-4 rounded overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-full animate-pulse" style="width: 92%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netscape Navigator Window -->
+      <div id="window-netscape" class="window-95 draggable hidden pointer-events-auto" style="top: 12%; left: 50%; transform: translateX(-50%); width: 550px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-blue-600 to-purple-500 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>🌐</span>
+            <span class="font-bold text-white text-sm">Netscape Navigator - Social Links</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="netscape" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="netscape" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="netscape" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 overflow-y-auto" style="max-height: 70vh;">
+          <div class="mb-4 text-cyan-400 font-mono text-sm">═══ CONNECT WITH YUKIOS ═══</div>
+          <div class="space-y-4">
+            <a href="https://t.me/Yuki OSSolana" target="_blank" class="block bg-blue-600 hover:bg-blue-500 transition-colors px-6 py-4 rounded-lg font-bold text-center">
+              📱 Telegram Community
+            </a>
+            <a href="https://x.com/Yuki OSSolana" target="_blank" class="block bg-black hover:bg-gray-800 transition-colors px-6 py-4 rounded-lg font-bold text-center">
+              🐦 X (Twitter)
+            </a>
+            <a href="#" target="_blank" class="block bg-purple-600 hover:bg-purple-500 transition-colors px-6 py-4 rounded-lg font-bold text-center">
+              💬 Discord Server
+            </a>
+            <div class="mt-6 p-4 bg-gray-700 rounded-lg text-center text-sm">
+              <p class="text-gray-300">Join our growing community!</p>
+              <p class="text-cyan-400 font-mono mt-2">Building the future, one block at a time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Launch Pump.exe Terminal Window -->
+      <div id="window-pump" class="window-95 draggable hidden pointer-events-auto" style="top: 8%; left: 50%; transform: translateX(-50%); width: 750px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-green-600 to-lime-500 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>🚀</span>
+            <span class="font-bold text-white text-sm">Terminal - Execute Order</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="pump" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="pump" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="pump" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-black text-green-400 p-6 font-mono text-sm overflow-y-auto" style="max-height: 70vh;">
+          <div class="mb-6">
+            <div class="text-green-500 mb-2">> COMMAND PROMPT INITIALIZED</div>
+            <div class="text-cyan-400 mb-4 typing-effect">C:\YUKIOS\PUMP> initiate_buy_sequence.exe</div>
+            <div class="text-yellow-400 mb-2 animate-pulse">⚠ Warning: High voltage volatility detected.</div>
+            <hr class="border-green-800 my-4">
+          </div>
+
+          <div class="space-y-4 text-center">
+            <p class="text-xl text-white font-bold">Are you ready to install <span class="text-green-400">wealth</span></p>
+            <p class="text-xl text-white font-bold">onto your Solana wallet?</p>
+
+            <div class="my-8">
+              <a
+                href="https://pump.fun/YOUR_TOKEN_ADDRESS"
+                target="_blank"
+                class="inline-block bg-gradient-to-r from-green-500 to-lime-500 hover:from-green-400 hover:to-lime-400 text-black font-bold text-lg px-12 py-4 rounded-lg transition-all transform hover:scale-105 animate-pulse"
+              >
+                🚀 CLICK HERE TO BUY ON PUMP.FUN 🚀
+              </a>
+            </div>
+
+            <div class="mt-6 text-xs space-y-1">
+              <div class="text-gray-500">> Connecting to Solana Network...</div>
+              <div class="text-gray-500">> Smart Contract: <span class="text-purple-400">VERIFIED ✓</span></div>
+              <div class="text-gray-500">> Security Audit: <span class="text-green-400">PASSED ✓</span></div>
+              <div class="text-green-400 animate-pulse">> STATUS: READY TO EXECUTE</div>
+            </div>
+          </div>
+
+          <div class="mt-8 p-4 border border-red-500 bg-red-950/30 rounded">
+            <p class="text-red-400 text-xs text-center">
+              ⚠ DISCLAIMER: Cryptocurrency investments carry high risk.
+              Only invest what you can afford to lose. DYOR.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yuki Terminal Window -->
+      <div id="window-terminal" class="window-95 draggable hidden pointer-events-auto" style="top: 10%; left: 50%; transform: translateX(-50%); width: 800px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>💻</span>
+            <span class="font-bold text-white text-sm">Yuki Terminal v1.0 - Intelligent AI Agent</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="terminal" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="terminal" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="terminal" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-black text-green-400 p-4 font-mono text-sm" style="height: 500px; max-height: 70vh; display: flex; flex-direction: column;">
+
+          <!-- Terminal Output Area -->
+          <div id="terminal-output" class="flex-1 overflow-y-auto mb-3 space-y-2">
+            <div class="terminal-line">
+              <span class="text-cyan-400">╔══════════════════════════════════════════════════════════════╗</span>
+            </div>
+            <div class="terminal-line">
+              <span class="text-cyan-400">║</span> <span class="text-purple-400 font-bold">YUKI TERMINAL v1.0</span> <span class="text-pink-400">- AI Agent</span> <span class="text-cyan-400">║</span>
+            </div>
+            <div class="terminal-line">
+              <span class="text-cyan-400">║</span> <span class="text-gray-400">Intelligent AI </span> <span class="text-cyan-400">║</span>
+            </div>
+            <div class="terminal-line">
+              <span class="text-cyan-400">╚══════════════════════════════════════════════════════════════╝</span>
+            </div>
+            <div class="terminal-line mt-3">
+              <span class="text-yellow-400">[SYSTEM]</span> <span class="text-green-400">Yuki AI Agent initialized successfully!</span>
+            </div>
+            <div class="terminal-line">
+              <span class="text-yellow-400">[SYSTEM]</span> <span class="text-gray-400">Chat naturally about Yuki OS, Solana, crypto & more!</span>
+            </div>
+            <div class="terminal-line">
+              <span class="text-yellow-400">[SYSTEM]</span> <span class="text-gray-400">Type '<span class="text-cyan-400">help</span>' for available commands.</span>
+            </div>
+            <div class="terminal-line mt-2">
+              <span class="text-gray-500">─────────────────────────────────────────────────────────────</span>
+            </div>
+          </div>
+
+          <!-- Terminal Input Area -->
+          <div class="flex items-center gap-2 border-t border-green-800 pt-3">
+            <span class="text-purple-400 font-bold">yuki@Yuki OS:~$</span>
+            <input
+              type="text"
+              id="terminal-input"
+              class="flex-1 bg-transparent border-none outline-none text-green-400 font-mono"
+              placeholder="Type your message..."
+              autocomplete="off"
+            />
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Calculator Window -->
+      <div id="window-calculator" class="window-95 draggable hidden pointer-events-auto" style="top: 15%; left: 50%; transform: translateX(-50%); width: 350px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-gray-700 to-gray-600 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>🔢</span>
+            <span class="font-bold text-white text-sm">Calculator</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="calculator" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="calculator" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="calculator" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-gray-900 p-4">
+          <!-- Calculator Display -->
+          <div id="calc-display" class="bg-black text-green-400 text-right text-2xl font-mono p-4 mb-4 rounded border-2 border-gray-700 min-h-[60px] flex items-center justify-end overflow-hidden">0</div>
+
+          <!-- Calculator Buttons -->
+          <div class="grid grid-cols-4 gap-2">
+            <!-- Row 1 -->
+            <button class="calc-btn calc-fn bg-red-600 hover:bg-red-500">AC</button>
+            <button class="calc-btn calc-fn bg-orange-600 hover:bg-orange-500">C</button>
+            <button class="calc-btn calc-fn bg-purple-600 hover:bg-purple-500">%</button>
+            <button class="calc-btn calc-op bg-cyan-600 hover:bg-cyan-500">÷</button>
+
+            <!-- Row 2 -->
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">7</button>
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">8</button>
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">9</button>
+            <button class="calc-btn calc-op bg-cyan-600 hover:bg-cyan-500">×</button>
+
+            <!-- Row 3 -->
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">4</button>
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">5</button>
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">6</button>
+            <button class="calc-btn calc-op bg-cyan-600 hover:bg-cyan-500">−</button>
+
+            <!-- Row 4 -->
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">1</button>
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">2</button>
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">3</button>
+            <button class="calc-btn calc-op bg-cyan-600 hover:bg-cyan-500">+</button>
+
+            <!-- Row 5 -->
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600 col-span-2">0</button>
+            <button class="calc-btn calc-num bg-gray-700 hover:bg-gray-600">.</button>
+            <button class="calc-btn calc-eq bg-green-600 hover:bg-green-500">=</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paint Window -->
+      <div id="window-paint" class="window-95 draggable hidden pointer-events-auto" style="top: 8%; left: 50%; transform: translateX(-50%); width: 700px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-pink-600 to-purple-600 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>🎨</span>
+            <span class="font-bold text-white text-sm">Yuki Paint</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="paint" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="paint" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="paint" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-gray-900 p-4">
+          <!-- Paint Controls -->
+          <div class="flex flex-wrap items-center gap-4 mb-4 pb-4 border-b border-gray-700">
+            <!-- Brush Size -->
+            <div class="flex items-center gap-2">
+              <label class="text-cyan-400 text-sm font-semibold">Brush:</label>
+              <input type="range" id="brush-size" min="1" max="50" value="5" class="w-24" />
+              <span id="brush-size-display" class="text-white text-sm font-mono">5px</span>
+            </div>
+
+            <!-- Color Picker -->
+            <div class="flex items-center gap-2">
+              <label class="text-cyan-400 text-sm font-semibold">Color:</label>
+              <div class="flex gap-1">
+                <button class="color-btn" data-color="#ec4899" style="background: #ec4899;"></button>
+                <button class="color-btn" data-color="#8b5cf6" style="background: #8b5cf6;"></button>
+                <button class="color-btn" data-color="#22d3ee" style="background: #22d3ee;"></button>
+                <button class="color-btn" data-color="#10b981" style="background: #10b981;"></button>
+                <button class="color-btn" data-color="#f59e0b" style="background: #f59e0b;"></button>
+                <button class="color-btn" data-color="#ef4444" style="background: #ef4444;"></button>
+                <button class="color-btn active" data-color="#ffffff" style="background: #ffffff;"></button>
+                <button class="color-btn" data-color="#000000" style="background: #000000;"></button>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <button id="clear-canvas" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded transition-colors">Clear</button>
+            <button id="download-canvas" class="px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-bold rounded transition-colors">Download</button>
+          </div>
+
+          <!-- Canvas -->
+          <canvas id="paint-canvas" class="w-full bg-black border-2 border-purple-500/50 rounded cursor-crosshair" style="height: 400px;"></canvas>
+        </div>
+      </div>
+
+      <!-- Notepad Window -->
+      <div id="window-notepad" class="window-95 draggable hidden pointer-events-auto" style="top: 10%; left: 50%; transform: translateX(-50%); width: 650px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-blue-600 to-cyan-500 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>📝</span>
+            <span class="font-bold text-white text-sm">Notepad++ - Untitled.txt</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="notepad" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="notepad" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="notepad" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-gray-900 p-4">
+          <!-- Notepad Controls -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-700">
+            <div class="flex items-center gap-3">
+              <button id="notepad-save" class="px-3 py-1 bg-green-600 hover:bg-green-500 text-white text-xs font-bold rounded transition-colors">Save</button>
+              <button id="notepad-export" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded transition-colors">Export .txt</button>
+            </div>
+            <div class="text-cyan-400 text-xs font-mono">
+              <span id="notepad-stats">Characters: 0 | Words: 0</span>
+            </div>
+          </div>
+
+          <!-- Notepad Textarea -->
+          <textarea
+            id="notepad-textarea"
+            class="w-full h-96 bg-black text-green-400 font-mono text-sm p-4 border-2 border-cyan-500/30 rounded resize-none focus:outline-none focus:border-cyan-500"
+            placeholder="Start typing your notes here... Auto-saves to localStorage! 📝"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Settings Window -->
+      <div id="window-settings" class="window-95 draggable hidden pointer-events-auto" style="top: 12%; left: 50%; transform: translateX(-50%); width: 600px; max-width: 92vw;">
+        <div class="window-titlebar cursor-move flex items-center justify-between bg-gradient-to-r from-gray-700 to-gray-900 px-3 py-2">
+          <div class="flex items-center gap-2">
+            <span>⚙️</span>
+            <span class="font-bold text-white text-sm">Control Panel - Settings</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="window-minimize text-white hover:bg-yellow-500 px-2 py-1 text-xs rounded transition-colors" data-window="settings" title="Minimize">−</button>
+            <button class="window-maximize text-white hover:bg-green-500 px-2 py-1 text-xs rounded transition-colors" data-window="settings" title="Maximize">□</button>
+            <button class="window-close text-white hover:bg-red-500 px-2 py-1 text-xs rounded transition-colors" data-window="settings" title="Close">✕</button>
+          </div>
+        </div>
+        <div class="window-content bg-gray-900 text-white p-6 overflow-y-auto" style="max-height: 70vh;">
+          <div class="space-y-6">
+            <!-- Volume Control -->
+            <div class="bg-gray-800 p-4 rounded-lg border border-purple-500/30">
+              <h3 class="text-cyan-400 font-bold mb-3 flex items-center gap-2">
+                <span>🔊</span> Volume Control
+              </h3>
+              <div class="flex items-center gap-4">
+                <input type="range" id="settings-volume" min="0" max="100" value="100" class="flex-1" />
+                <span id="settings-volume-display" class="text-white font-mono text-sm w-12">100%</span>
+              </div>
+            </div>
+
+            <!-- Animation Speed -->
+            <div class="bg-gray-800 p-4 rounded-lg border border-purple-500/30">
+              <h3 class="text-cyan-400 font-bold mb-3 flex items-center gap-2">
+                <span>⚡</span> Animation Speed
+              </h3>
+              <div class="flex items-center gap-4">
+                <span class="text-sm">Slow</span>
+                <input type="range" id="settings-animation" min="0.5" max="2" step="0.5" value="1" class="flex-1" />
+                <span class="text-sm">Fast</span>
+                <span id="settings-animation-display" class="text-white font-mono text-sm w-12">1x</span>
+              </div>
+            </div>
+
+            <!-- Background Effects -->
+            <div class="bg-gray-800 p-4 rounded-lg border border-purple-500/30">
+              <h3 class="text-cyan-400 font-bold mb-3 flex items-center gap-2">
+                <span>✨</span> Background Effects
+              </h3>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="settings-effects" checked class="w-5 h-5" />
+                <span>Enable animated background effects</span>
+              </label>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="bg-gray-800 p-4 rounded-lg border border-purple-500/30">
+              <h3 class="text-cyan-400 font-bold mb-3 flex items-center gap-2">
+                <span>🌐</span> Language
+              </h3>
+              <select id="settings-language" class="w-full bg-gray-700 text-white px-4 py-2 rounded border border-gray-600">
+                <option value="en">English</option>
+                <option value="id">Bahasa Indonesia</option>
+              </select>
+            </div>
+
+            <!-- Reset Button -->
+            <button id="settings-reset" class="w-full py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded transition-colors">
+              Reset to Defaults
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Start Menu -->
+    <div id="start-menu" class="fixed bottom-16 left-3 md:left-4 hidden z-40 animate-slideUp">
+      <div class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 border-2 border-cyan-400 rounded-lg shadow-2xl overflow-hidden" style="width: 320px;">
+
+        <!-- Start Menu Header -->
+        <div class="bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-3 border-b-2 border-cyan-400">
+          <div class="flex items-center gap-3">
+            <img src="/LOGO.png" alt="Yuki OS" class="logo-start-menu" />
+            <div>
+              <div class="font-bold text-white text-sm">Yuki OS</div>
+              <div class="text-xs text-cyan-300">Kawaii Cyberdeck v1.0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Menu Items -->
+        <div class="p-2">
+          <!-- Programs Section -->
+          <div class="mb-2">
+            <div class="text-xs text-cyan-400 font-bold px-2 py-1 uppercase tracking-wider">Programs</div>
+
+            <button class="start-menu-item" data-action="documents">
+              <span class="text-xl">📁</span>
+              <div class="flex-1 text-left">
+                <div class="font-semibold text-sm">My Documents</div>
+                <div class="text-xs text-gray-400">About Yuki & Yuki OS</div>
+              </div>
+            </button>
+
+            <button class="start-menu-item" data-action="taskmanager">
+              <span class="text-xl">📈</span>
+              <div class="flex-1 text-left">
+                <div class="font-semibold text-sm">Task Manager</div>
+                <div class="text-xs text-gray-400">System Resources & Tokenomics</div>
+              </div>
+            </button>
+
+            <button class="start-menu-item" data-action="netscape">
+              <span class="text-xl">🌐</span>
+              <div class="flex-1 text-left">
+                <div class="font-semibold text-sm">Netscape Navigator</div>
+                <div class="text-xs text-gray-400">Social Media Links</div>
+              </div>
+            </button>
+
+            <button class="start-menu-item" data-action="terminal">
+              <span class="text-xl">💻</span>
+              <div class="flex-1 text-left">
+                <div class="font-semibold text-sm text-green-400">Yuki Terminal</div>
+                <div class="text-xs text-gray-400">Intelligent AI Agent</div>
+              </div>
+            </button>
+          </div>
+
+          <div class="border-t border-purple-500/30 my-2"></div>
+
+          <!-- Quick Actions -->
+          <div class="mb-2">
+            <div class="text-xs text-cyan-400 font-bold px-2 py-1 uppercase tracking-wider">Quick Actions</div>
+
+            <button class="start-menu-item highlight" data-action="pump">
+              <span class="text-xl animate-pulse">🚀</span>
+              <div class="flex-1 text-left">
+                <div class="font-bold text-sm text-yellow-300">Launch PUMP.EXE</div>
+                <div class="text-xs text-yellow-400">Buy $YUKIOS Token</div>
+              </div>
+            </button>
+          </div>
+
+          <div class="border-t border-purple-500/30 my-2"></div>
+
+          <!-- System Section -->
+          <div>
+            <div class="text-xs text-cyan-400 font-bold px-2 py-1 uppercase tracking-wider">System</div>
+
+            <button class="start-menu-item" data-action="about">
+              <span class="text-xl">ℹ️</span>
+              <div class="flex-1 text-left">
+                <div class="font-semibold text-sm">About Yuki OS</div>
+                <div class="text-xs text-gray-400">System Information</div>
+              </div>
+            </button>
+
+            <button class="start-menu-item" data-action="settings">
+              <span class="text-xl">⚙️</span>
+              <div class="flex-1 text-left">
+                <div class="font-semibold text-sm">Settings</div>
+                <div class="text-xs text-gray-400">System Configuration</div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Start Menu Footer -->
+        <div class="bg-black/50 px-4 py-2 border-t border-cyan-400/30 flex items-center justify-between">
+          <div class="text-xs text-gray-400">
+            <span class="text-purple-400 font-bold">◎</span> SOL: <span id="start-menu-sol-price" class="text-green-400 font-mono">$---</span>
+          </div>
+          <div class="text-xs text-cyan-400 font-mono" id="start-menu-time">--:--</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div class="fixed bottom-0 left-0 right-0 h-14 bg-gradient-to-r from-purple-900 via-blue-900 to-cyan-900 border-t-2 border-cyan-400 shadow-lg shadow-cyan-500/50 z-30">
+      <div class="flex items-center justify-between h-full px-3 md:px-4">
+        <!-- Start Button -->
+        <button id="start-button" class="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-3 md:px-4 py-2 rounded font-bold text-white text-xs md:text-sm transition-all transform hover:scale-105 shadow-lg">
+          <span class="text-lg md:text-xl">◎</span>
+          <span class="hidden sm:inline">Start</span>
+        </button>
+
+        <!-- Center - Opened Windows Buttons -->
+        <div id="taskbar-windows" class="flex gap-2 flex-1 mx-2 md:mx-4 overflow-x-auto">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Right - System Tray -->
+        <div class="flex items-center gap-2 md:gap-4">
+          <!-- $YUKIOS Price Widget -->
+          <div class="flex items-center gap-1 md:gap-2 bg-black/60 px-2 md:px-3 py-1.5 rounded border border-pink-500/30 text-xs hover:border-pink-500/60 transition-all cursor-pointer group" title="$YUKIOS Token Price">
+            <span class="text-pink-400 font-bold group-hover:scale-110 transition-transform">💎</span>
+            <span class="text-gray-400 hidden md:inline">$YUKIOS:</span>
+            <span id="yukios-price" class="text-pink-400 font-bold font-mono">$---</span>
+            <span id="yukios-change" class="text-xs font-mono"></span>
+          </div>
+          <!-- SOL Price Widget -->
+          <div class="flex items-center gap-1 md:gap-2 bg-black/60 px-2 md:px-3 py-1.5 rounded border border-purple-500/30 text-xs hover:border-purple-500/60 transition-all cursor-pointer group" title="Solana Price">
+            <span class="text-purple-400 font-bold group-hover:scale-110 transition-transform">◎</span>
+            <span class="text-gray-400 hidden md:inline">SOL:</span>
+            <span id="sol-price" class="text-green-400 font-bold font-mono">$---</span>
+          </div>
+          <!-- Sound Toggle Button -->
+          <button id="sound-toggle" class="bg-black/60 px-2 md:px-3 py-1.5 rounded border border-cyan-500/30 text-xs hover:border-cyan-500/60 transition-all group" title="Toggle Sound Effects">
+            <span id="sound-icon" class="text-lg">🔊</span>
+          </button>
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="bg-black/60 px-2 md:px-3 py-1.5 rounded border border-yellow-500/30 text-xs hover:border-yellow-500/60 transition-all group" title="Toggle Theme">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+          <!-- Clock -->
+          <div id="clock" class="text-cyan-400 font-mono text-xs md:text-sm font-bold bg-black/60 px-2 md:px-3 py-1.5 rounded border border-cyan-500/30">
+            --:--:--
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+  /* Logo Styling */
+  .logo-boot {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8))
+            drop-shadow(0 0 40px rgba(236, 72, 153, 0.6))
+            drop-shadow(0 0 60px rgba(34, 211, 238, 0.4));
+    animation: logoPulse 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    .logo-boot {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  @keyframes logoPulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8))
+              drop-shadow(0 0 40px rgba(236, 72, 153, 0.6))
+              drop-shadow(0 0 60px rgba(34, 211, 238, 0.4));
+    }
+    50% {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 30px rgba(139, 92, 246, 1))
+              drop-shadow(0 0 60px rgba(236, 72, 153, 0.8))
+              drop-shadow(0 0 80px rgba(34, 211, 238, 0.6));
+    }
+  }
+
+  .logo-start-menu {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))
+            drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
+    transition: all 0.3s ease;
+  }
+
+  .logo-start-menu:hover {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8))
+            drop-shadow(0 0 20px rgba(139, 92, 246, 0.9));
+    transform: scale(1.05);
+  }
+
+  /* Boot Sequence Animations */
+  .boot-line {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  .boot-line.delay-200 { animation-delay: 0.2s; }
+  .boot-line.delay-400 { animation-delay: 0.4s; }
+  .boot-line.delay-600 { animation-delay: 0.6s; }
+  .boot-line.delay-800 { animation-delay: 0.8s; }
+  .boot-line.delay-1000 { animation-delay: 1s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scanline CRT Effect */
+  .scanline-overlay {
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 255, 0, 0.02) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 8s linear infinite;
+  }
+
+  @keyframes scanlines {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+  }
+
+  /* Vignette Effect */
+  .bg-radial-vignette {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+
+  /* Desktop Icons */
+  .desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 110px;
+    height: 110px;
+  }
+
+  .desktop-icon:hover {
+    background: rgba(139, 92, 246, 0.3);
+    border-color: rgba(236, 72, 153, 0.6);
+    transform: translateY(-4px);
+    box-shadow:
+      0 8px 16px rgba(139, 92, 246, 0.4),
+      0 0 20px rgba(236, 72, 153, 0.3);
+  }
+
+  .desktop-icon:active {
+    transform: translateY(-2px);
+  }
+
+  .icon-label {
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-shadow:
+      2px 2px 4px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(139, 92, 246, 0.6);
+    text-align: center;
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+
+  /* Window Styles */
+  .window-95 {
+    background: white;
+    border: 3px solid #dfdfdf;
+    border-top-color: white;
+    border-left-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+      4px 4px 0 rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(139, 92, 246, 0.5),
+      0 0 60px rgba(236, 72, 153, 0.3);
+    position: fixed;
+    animation: windowAppear 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes windowAppear {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) scale(0.9) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) scale(1) translateY(0);
+    }
+  }
+
+  .window-titlebar {
+    user-select: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .window-content {
+    position: relative;
+  }
+
+  /* Start Menu Styles */
+  #start-menu {
+    animation: slideUp 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .start-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 0.25rem;
+  }
+
+  .start-menu-item:hover {
+    background: rgba(139, 92, 246, 0.3);
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+  }
+
+  .start-menu-item:active {
+    transform: translateX(2px);
+  }
+
+  .start-menu-item.highlight {
+    background: rgba(234, 179, 8, 0.15);
+    border-color: rgba(234, 179, 8, 0.4);
+  }
+
+  .start-menu-item.highlight:hover {
+    background: rgba(234, 179, 8, 0.25);
+    border-color: rgba(234, 179, 8, 0.6);
+    box-shadow: 0 2px 12px rgba(234, 179, 8, 0.5);
+  }
+
+  /* Typing Effect */
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  .typing-effect {
+    overflow: hidden;
+    border-right: 2px solid #0f0;
+    white-space: nowrap;
+    animation: typing 2s steps(40) 1s forwards, blink 0.5s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .desktop-icon {
+      width: 90px;
+      height: 90px;
+      padding: 0.5rem;
+      touch-action: manipulation; /* Optimize touch response */
+    }
+
+    .icon-label {
+      font-size: 0.625rem;
+    }
+
+    .window-95 {
+      left: 4% !important;
+      right: 4% !important;
+      width: 92% !important;
+      transform: translateX(0) !important;
+      border-radius: 6px;
+      max-height: 85vh !important; /* Prevent windows from being too tall on mobile */
+    }
+
+    .window-titlebar {
+      touch-action: none; /* Allow dragging without scrolling */
+      padding: 0.5rem !important;
+    }
+
+    @keyframes windowAppear {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Mobile-specific optimizations */
+    #start-menu {
+      width: 95vw !important;
+      max-width: 320px;
+      left: 2.5vw !important;
+    }
+
+    .start-menu-item {
+      padding: 0.75rem !important;
+      touch-action: manipulation;
+    }
+
+    /* Improve touch targets */
+    button, .desktop-icon, .start-menu-item {
+      min-height: 44px; /* Apple's recommended touch target size */
+      touch-action: manipulation;
+    }
+
+    /* Optimize window content for mobile */
+    .window-content {
+      font-size: 0.875rem;
+      padding: 1rem !important;
+    }
+
+    /* Make close buttons larger on mobile */
+    .window-close-btn {
+      min-width: 32px !important;
+      min-height: 32px !important;
+    }
+  }
+
+  /* Small mobile devices (portrait phones) */
+  @media (max-width: 480px) {
+    .desktop-icon {
+      width: 80px;
+      height: 80px;
+      padding: 0.375rem;
+    }
+
+    .icon-label {
+      font-size: 0.5625rem;
+    }
+
+    .window-content {
+      font-size: 0.8125rem;
+      padding: 0.75rem !important;
+    }
+
+    /* Stack taskbar elements more efficiently */
+    #taskbar-windows {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+  }
+
+  /* Landscape mobile optimization */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .window-95 {
+      max-height: 75vh !important;
+    }
+
+    /* Reduce header spacing in landscape */
+    .desktop-icon {
+      width: 70px;
+      height: 70px;
+    }
+  }
+
+  /* Scrollbar Styling */
+  .window-content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .window-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .window-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8b5cf6, #ec4899);
+    border-radius: 4px;
+  }
+
+  .window-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #a855f7, #f472b6);
+  }
+
+  /* Terminal Scrollbar */
+  #terminal-output::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #terminal-output::-webkit-scrollbar-track {
+    background: #111;
+  }
+
+  #terminal-output::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 3px;
+  }
+
+  #terminal-output::-webkit-scrollbar-thumb:hover {
+    background: #34d399;
+  }
+
+  /* Terminal Line Animation */
+  .terminal-line {
+    animation: terminalFadeIn 0.3s ease-out;
+  }
+
+  @keyframes terminalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 🌓 LIGHT THEME STYLES */
+  .light-theme {
+    background: linear-gradient(to bottom, #f0f4ff, #e0e7ff) !important;
+  }
+
+  .light-theme .desktop-icon .icon-label {
+    color: #1f2937 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .light-theme .start-menu-item {
+    color: #1f2937 !important;
+  }
+
+  .light-theme .start-menu-item:hover {
+    background: linear-gradient(to right, rgba(167, 139, 250, 0.3), rgba(236, 72, 153, 0.3)) !important;
+  }
+
+  .light-theme #start-menu {
+    background: linear-gradient(to bottom right, #f3f4f6, #e5e7eb) !important;
+  }
+
+  .light-theme .window-95 {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Loading Spinner */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  /* Pulse Animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Slide Up Animation for Start Menu */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  /* Easter Egg - Konami Code Effect */
+  @keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  .konami-active {
+    animation: rainbow 3s linear infinite !important;
+  }
+
+  /* 🔢 Calculator Button Styles */
+  .calc-btn {
+    padding: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .calc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .calc-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .calc-num {
+    background: #374151;
+  }
+
+  .calc-num:hover {
+    background: #4b5563;
+  }
+
+  .calc-op {
+    background: #0891b2;
+  }
+
+  .calc-op:hover {
+    background: #06b6d4;
+  }
+
+  .calc-fn {
+    background: #dc2626;
+  }
+
+  .calc-fn:hover {
+    background: #ef4444;
+  }
+
+  .calc-eq {
+    background: #16a34a;
+  }
+
+  .calc-eq:hover {
+    background: #22c55e;
+  }
+
+  /* 🎨 Paint Color Button Styles */
+  .color-btn {
+    width: 32px;
+    height: 32px;
+    border: 2px solid transparent;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .color-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
+  .color-btn.active {
+    border-color: #22d3ee;
+    box-shadow: 0 0 10px #22d3ee;
+  }
+</style>
+
+<script>
+  // 🔊 SOUND EFFECTS SYSTEM - Define early
+  let soundEnabled = localStorage.getItem('yukios-sound-enabled') !== 'false'
+
+  const sounds = {
+    boot: new Audio('data:audio/wav;base64,//uQRAAAAWMSLwUIYAAsYkXgoQwAEaYLWfkWgAI0wWs/ItAAAGDgYtAgAyN+QWaAAihwMWm4G8QQRDiMcCBcH3Cc+CDv/7xA4Tr'),
+    click: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='),
+    open: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='),
+    close: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='),
+    minimize: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='),
+  }
+
+  function playSound(soundName: keyof typeof sounds) {
+    if (soundEnabled && sounds[soundName]) {
+      sounds[soundName].volume = 0.3
+      sounds[soundName].currentTime = 0
+      sounds[soundName].play().catch(() => {})
+    }
+  }
+
+  // 🔔 NOTIFICATION SYSTEM - Define early
+  function showNotification(title: string, message: string, type: 'success' | 'info' | 'warning' | 'error' = 'info') {
+    const notification = document.createElement('div')
+    notification.className = `fixed top-20 right-4 z-50 px-6 py-4 rounded-lg shadow-lg border-2 max-w-sm transform transition-all duration-300 translate-x-full`
+
+    const colors = {
+      success: 'bg-green-900/90 border-green-400 text-green-100',
+      info: 'bg-blue-900/90 border-blue-400 text-blue-100',
+      warning: 'bg-yellow-900/90 border-yellow-400 text-yellow-100',
+      error: 'bg-red-900/90 border-red-400 text-red-100',
+    }
+
+    notification.className += ` ${colors[type]}`
+    notification.innerHTML = `
+      <div class="font-bold mb-1">${title}</div>
+      <div class="text-sm">${message}</div>
+    `
+
+    document.body.appendChild(notification)
+
+    setTimeout(() => {
+      notification.style.transform = 'translateX(0)'
+    }, 100)
+
+    setTimeout(() => {
+      notification.style.transform = 'translateX(120%)'
+      setTimeout(() => notification.remove(), 300)
+    }, 4000)
+
+    playSound('click')
+  }
+
+  // 🎬 BOOT SEQUENCE & DESKTOP FADE IN
+  setTimeout(() => {
+    const bootScreen = document.getElementById('boot-screen')
+    const desktop = document.getElementById('desktop')
+
+    if (bootScreen && desktop) {
+      bootScreen.style.opacity = '0'
+      desktop.style.opacity = '1'
+
+      setTimeout(() => {
+        bootScreen.style.display = 'none'
+      }, 1000)
+
+      // Play boot sound if enabled
+      playSound('boot')
+    }
+  }, 3000) // Boot sequence lasts 3 seconds
+
+  // 🕐 CLOCK UPDATE
+  function updateClock() {
+    const clockEl = document.getElementById('clock')
+    const startMenuTimeEl = document.getElementById('start-menu-time')
+
+    if (clockEl || startMenuTimeEl) {
+      const now = new Date()
+      const hours = String(now.getHours()).padStart(2, '0')
+      const minutes = String(now.getMinutes()).padStart(2, '0')
+      const seconds = String(now.getSeconds()).padStart(2, '0')
+      const timeString = `${hours}:${minutes}:${seconds}`
+      const shortTimeString = `${hours}:${minutes}`
+
+      if (clockEl) clockEl.textContent = timeString
+      if (startMenuTimeEl) startMenuTimeEl.textContent = shortTimeString
+    }
+  }
+
+  updateClock()
+  setInterval(updateClock, 1000)
+
+  // 💰 SOL PRICE FETCH
+  async function updateSOLPrice() {
+    try {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd')
+      const data = await response.json()
+      const price = data.solana.usd
+      const priceEl = document.getElementById('sol-price')
+      const startMenuPriceEl = document.getElementById('start-menu-sol-price')
+
+      if (priceEl) {
+        priceEl.textContent = `$${price.toFixed(2)}`
+      }
+      if (startMenuPriceEl) {
+        startMenuPriceEl.textContent = `$${price.toFixed(2)}`
+      }
+    } catch (error) {
+      console.log('Failed to fetch SOL price:', error)
+      const priceEl = document.getElementById('sol-price')
+      const startMenuPriceEl = document.getElementById('start-menu-sol-price')
+      if (priceEl) priceEl.textContent = '$---.--'
+      if (startMenuPriceEl) startMenuPriceEl.textContent = '$---.--'
+    }
+  }
+
+  updateSOLPrice()
+  setInterval(updateSOLPrice, 30000) // Update every 30 seconds
+
+  // 💎 $YUKIOS PRICE FETCH (using DexScreener API)
+  async function updateYUKIOSPrice() {
+    try {
+      // TODO: Replace with actual $YUKIOS token address when available
+      // For now, showing mock data
+      const mockPrice = (Math.random() * 0.0001).toFixed(8)
+      const mockChange = ((Math.random() - 0.5) * 20).toFixed(2)
+      const priceEl = document.getElementById('yukios-price')
+      const changeEl = document.getElementById('yukios-change')
+
+      if (priceEl) {
+        priceEl.textContent = `$${mockPrice}`
+      }
+      if (changeEl) {
+        const changeNum = parseFloat(mockChange)
+        changeEl.textContent = `${changeNum > 0 ? '+' : ''}${mockChange}%`
+        changeEl.className = `text-xs font-mono ${changeNum > 0 ? 'text-green-400' : 'text-red-400'}`
+      }
+
+      // Uncomment when token is deployed:
+      // const response = await fetch('https://api.dexscreener.com/latest/dex/tokens/YOUR_TOKEN_ADDRESS')
+      // const data = await response.json()
+      // const pair = data.pairs?.[0]
+      // if (pair && priceEl) {
+      //   priceEl.textContent = `$${parseFloat(pair.priceUsd).toFixed(8)}`
+      //   if (changeEl) {
+      //     const change24h = parseFloat(pair.priceChange?.h24 || 0)
+      //     changeEl.textContent = `${change24h > 0 ? '+' : ''}${change24h.toFixed(2)}%`
+      //     changeEl.className = `text-xs font-mono ${change24h > 0 ? 'text-green-400' : 'text-red-400'}`
+      //   }
+      // }
+    } catch (error) {
+      console.log('Failed to fetch YUKIOS price:', error)
+      const priceEl = document.getElementById('yukios-price')
+      if (priceEl) priceEl.textContent = '$---.--'
+    }
+  }
+
+  updateYUKIOSPrice()
+  setInterval(updateYUKIOSPrice, 30000) // Update every 30 seconds
+
+  // 🔊 SOUND EFFECTS SYSTEM - Already defined at top
+
+  // Sound toggle button
+  const soundToggle = document.getElementById('sound-toggle')
+  const soundIcon = document.getElementById('sound-icon')
+
+  function updateSoundIcon() {
+    if (soundIcon) {
+      soundIcon.textContent = soundEnabled ? '🔊' : '🔇'
+    }
+  }
+
+  updateSoundIcon()
+
+  soundToggle?.addEventListener('click', () => {
+    soundEnabled = !soundEnabled
+    localStorage.setItem('yukios-sound-enabled', String(soundEnabled))
+    updateSoundIcon()
+    playSound('click')
+  })
+
+  // 🌓 THEME TOGGLE SYSTEM
+  let isDarkTheme = localStorage.getItem('yukios-theme') !== 'light' // Default: dark
+
+  const themeToggle = document.getElementById('theme-toggle')
+  const themeIcon = document.getElementById('theme-icon')
+  const desktopEl = document.getElementById('desktop')
+
+  function updateTheme() {
+    if (desktopEl) {
+      if (isDarkTheme) {
+        desktopEl.classList.remove('light-theme')
+        desktopEl.classList.add('dark-theme')
+      } else {
+        desktopEl.classList.remove('dark-theme')
+        desktopEl.classList.add('light-theme')
+      }
+    }
+    if (themeIcon) {
+      themeIcon.textContent = isDarkTheme ? '🌙' : '☀️'
+    }
+  }
+
+  updateTheme()
+
+  themeToggle?.addEventListener('click', () => {
+    isDarkTheme = !isDarkTheme
+    localStorage.setItem('yukios-theme', isDarkTheme ? 'dark' : 'light')
+    updateTheme()
+    playSound('click')
+  })
+
+  // 📋 START MENU TOGGLE
+  const startButton = document.getElementById('start-button')
+  const startMenu = document.getElementById('start-menu')
+  let isStartMenuOpen = false
+
+  startButton?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    isStartMenuOpen = !isStartMenuOpen
+
+    if (startMenu) {
+      if (isStartMenuOpen) {
+        startMenu.classList.remove('hidden')
+      } else {
+        startMenu.classList.add('hidden')
+      }
+    }
+  })
+
+  // Close start menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (startMenu && isStartMenuOpen) {
+      const target = e.target as HTMLElement
+      if (!startMenu.contains(target) && target !== startButton) {
+        startMenu.classList.add('hidden')
+        isStartMenuOpen = false
+      }
+    }
+  })
+
+  // 🎯 START MENU ACTIONS
+  const startMenuItems = document.querySelectorAll('.start-menu-item')
+  startMenuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const action = item.getAttribute('data-action')
+
+      // Close start menu
+      if (startMenu) {
+        startMenu.classList.add('hidden')
+        isStartMenuOpen = false
+      }
+
+      // Perform action
+      switch(action) {
+        case 'documents':
+          openWindow('documents')
+          break
+        case 'taskmanager':
+          openWindow('taskmanager')
+          break
+        case 'netscape':
+          openWindow('netscape')
+          break
+        case 'pump':
+          openWindow('pump')
+          break
+        case 'terminal':
+          openWindow('terminal')
+          break
+        case 'calculator':
+          openWindow('calculator')
+          break
+        case 'about':
+          showAboutDialog()
+          break
+        case 'settings':
+          showSettingsDialog()
+          break
+      }
+    })
+  })
+
+  // Helper function to open windows
+  function openWindow(windowName: string) {
+    const windowEl = document.getElementById(`window-${windowName}`)
+    if (windowEl) {
+      windowEl.classList.remove('hidden')
+      windowEl.style.zIndex = String(++zIndexCounter)
+    }
+  }
+
+  // About Dialog
+  function showAboutDialog() {
+    alert(`Yuki OS v1.0.0 - Kawaii Cyberdeck Edition
+
+Built with 72 hours of coding, energy drinks, and pure determination.
+
+Created by: Yuki, Lead Dev
+Platform: Solana Blockchain
+Theme: Retro-Cyber Vaporwave
+
+© 2024 Yuki OS. All rights reserved.`)
+  }
+
+  // Settings Dialog
+  function showSettingsDialog() {
+    alert(`⚙️ Settings
+
+Video Wallpaper: Enabled ✓
+CRT Effects: Enabled ✓
+Scanlines: Enabled ✓
+Auto-pause: Enabled ✓
+SOL Price Widget: Enabled ✓
+
+Coming Soon:
+- Theme Customization
+- Sound Effects Toggle
+- Particle Effects`)
+  }
+
+  // 🪟 WINDOW MANAGEMENT
+  let zIndexCounter = 100
+
+  // Open Window
+  const desktopIcons = document.querySelectorAll('.desktop-icon')
+  desktopIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const windowName = icon.getAttribute('data-window')
+      const windowEl = document.getElementById(`window-${windowName}`)
+
+      if (windowEl) {
+        windowEl.classList.remove('hidden')
+        windowEl.style.zIndex = String(++zIndexCounter)
+
+        // Play click sound (if available)
+        playSound('click')
+      }
+    })
+  })
+
+  // Close Window
+  const closeButtons = document.querySelectorAll('.window-close')
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const windowName = btn.getAttribute('data-window')
+      const windowEl = document.getElementById(`window-${windowName}`)
+
+      if (windowEl) {
+        windowEl.classList.add('hidden')
+        playSound('close')
+        removeFromTaskbar(windowName!)
+      }
+    })
+  })
+
+  // Minimize Window
+  const minimizeButtons = document.querySelectorAll('.window-minimize')
+  const minimizedWindows = new Map<string, { top: string, left: string, width: string, transform: string }>()
+
+  minimizeButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      const windowName = btn.getAttribute('data-window')
+      const windowEl = document.getElementById(`window-${windowName}`) as HTMLElement
+
+      if (windowEl && windowName) {
+        // Save current position
+        minimizedWindows.set(windowName, {
+          top: windowEl.style.top,
+          left: windowEl.style.left,
+          width: windowEl.style.width,
+          transform: windowEl.style.transform,
+        })
+
+        // Animate to taskbar
+        windowEl.style.transition = 'all 0.3s ease-out'
+        windowEl.style.transform = 'scale(0.1) translateY(100vh)'
+        windowEl.style.opacity = '0'
+
+        setTimeout(() => {
+          windowEl.classList.add('hidden')
+          windowEl.style.transition = ''
+          windowEl.style.transform = minimizedWindows.get(windowName)?.transform || ''
+          windowEl.style.opacity = '1'
+        }, 300)
+
+        playSound('minimize')
+        updateTaskbarButton(windowName, true)
+      }
+    })
+  })
+
+  // Maximize/Restore Window
+  const maximizeButtons = document.querySelectorAll('.window-maximize')
+  const maximizedState = new Map<string, boolean>()
+  const originalSizes = new Map<string, { top: string, left: string, width: string, height: string, transform: string }>()
+
+  maximizeButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      const windowName = btn.getAttribute('data-window')
+      const windowEl = document.getElementById(`window-${windowName}`) as HTMLElement
+      const isMaximized = maximizedState.get(windowName!) || false
+
+      if (windowEl && windowName) {
+        if (isMaximized) {
+          // Restore
+          const original = originalSizes.get(windowName)
+          if (original) {
+            windowEl.style.top = original.top
+            windowEl.style.left = original.left
+            windowEl.style.width = original.width
+            windowEl.style.height = original.height
+            windowEl.style.transform = original.transform
+          }
+          btn.textContent = '□'
+          maximizedState.set(windowName, false)
+        } else {
+          // Maximize
+          originalSizes.set(windowName, {
+            top: windowEl.style.top,
+            left: windowEl.style.left,
+            width: windowEl.style.width,
+            height: windowEl.style.height,
+            transform: windowEl.style.transform,
+          })
+
+          windowEl.style.top = '0'
+          windowEl.style.left = '0'
+          windowEl.style.width = '100vw'
+          windowEl.style.height = '100vh'
+          windowEl.style.transform = 'none'
+          btn.textContent = '❐'
+          maximizedState.set(windowName, true)
+        }
+
+        playSound('click')
+      }
+    })
+  })
+
+  // Taskbar Window Management
+  function updateTaskbarButton(windowName: string, isMinimized: boolean) {
+    const taskbarButton = document.querySelector(`[data-taskbar-window="${windowName}"]`)
+    if (taskbarButton) {
+      if (isMinimized) {
+        taskbarButton.classList.add('opacity-60')
+      } else {
+        taskbarButton.classList.remove('opacity-60')
+      }
+    }
+  }
+
+  function removeFromTaskbar(windowName: string) {
+    const taskbarButton = document.querySelector(`[data-taskbar-window="${windowName}"]`)
+    if (taskbarButton) {
+      taskbarButton.remove()
+    }
+  }
+
+  // Restore minimized window from taskbar (optional feature)
+  function restoreWindow(windowName: string) {
+    const windowEl = document.getElementById(`window-${windowName}`) as HTMLElement
+    if (windowEl) {
+      const saved = minimizedWindows.get(windowName)
+      if (saved) {
+        windowEl.style.top = saved.top
+        windowEl.style.left = saved.left
+        windowEl.style.width = saved.width
+        windowEl.style.transform = saved.transform
+        minimizedWindows.delete(windowName)
+      }
+      windowEl.classList.remove('hidden')
+      windowEl.style.zIndex = String(++zIndexCounter)
+      updateTaskbarButton(windowName, false)
+      playSound('open')
+    }
+  }
+
+  // Draggable Windows (Desktop & Mobile Support)
+  const draggableWindows = document.querySelectorAll('.draggable')
+  let draggedWindow: HTMLElement | null = null
+  let offsetX = 0
+  let offsetY = 0
+
+  draggableWindows.forEach(win => {
+    const titlebar = win.querySelector('.window-titlebar')
+
+    if (titlebar) {
+      // Mouse events (Desktop)
+      titlebar.addEventListener('mousedown', (e: Event) => {
+        const mouseEvent = e as MouseEvent
+        if (win instanceof HTMLElement) {
+          draggedWindow = win
+          draggedWindow.style.zIndex = String(++zIndexCounter)
+
+          const rect = draggedWindow.getBoundingClientRect()
+          offsetX = mouseEvent.clientX - rect.left
+          offsetY = mouseEvent.clientY - rect.top
+
+          document.addEventListener('mousemove', onMouseMove)
+          document.addEventListener('mouseup', onMouseUp)
+        }
+      })
+
+      // Touch events (Mobile)
+      titlebar.addEventListener('touchstart', (e: Event) => {
+        const touchEvent = e as TouchEvent
+        if (win instanceof HTMLElement && touchEvent.touches.length === 1) {
+          draggedWindow = win
+          draggedWindow.style.zIndex = String(++zIndexCounter)
+
+          const rect = draggedWindow.getBoundingClientRect()
+          const touch = touchEvent.touches[0]
+          offsetX = touch.clientX - rect.left
+          offsetY = touch.clientY - rect.top
+
+          document.addEventListener('touchmove', onTouchMove, { passive: false })
+          document.addEventListener('touchend', onTouchEnd)
+        }
+      })
+    }
+
+    // Bring to front on click (Desktop)
+    win.addEventListener('mousedown', () => {
+      if (win instanceof HTMLElement) {
+        win.style.zIndex = String(++zIndexCounter)
+      }
+    })
+
+    // Bring to front on touch (Mobile)
+    win.addEventListener('touchstart', () => {
+      if (win instanceof HTMLElement) {
+        win.style.zIndex = String(++zIndexCounter)
+      }
+    })
+  })
+
+  function onMouseMove(e: MouseEvent) {
+    if (draggedWindow) {
+      const x = e.clientX - offsetX
+      const y = e.clientY - offsetY
+
+      draggedWindow.style.left = `${x}px`
+      draggedWindow.style.top = `${y}px`
+      draggedWindow.style.transform = 'none'
+    }
+  }
+
+  function onMouseUp() {
+    draggedWindow = null
+    document.removeEventListener('mousemove', onMouseMove)
+    document.removeEventListener('mouseup', onMouseUp)
+  }
+
+  function onTouchMove(e: TouchEvent) {
+    if (draggedWindow && e.touches.length === 1) {
+      e.preventDefault() // Prevent scrolling while dragging
+      const touch = e.touches[0]
+      const x = touch.clientX - offsetX
+      const y = touch.clientY - offsetY
+
+      draggedWindow.style.left = `${x}px`
+      draggedWindow.style.top = `${y}px`
+      draggedWindow.style.transform = 'none'
+    }
+  }
+
+  function onTouchEnd() {
+    draggedWindow = null
+    document.removeEventListener('touchmove', onTouchMove)
+    document.removeEventListener('touchend', onTouchEnd)
+  }
+
+  // 🔢 CALCULATOR - FUNCTIONAL IMPLEMENTATION
+  const calcDisplay = document.getElementById('calc-display')
+  let calcCurrentValue = '0'
+  let calcPreviousValue = ''
+  let calcOperator = ''
+  let calcNewNumber = true
+
+  function updateCalcDisplay(value: string) {
+    if (calcDisplay) {
+      calcDisplay.textContent = value
+    }
+  }
+
+  function handleCalcNumber(num: string) {
+    if (calcNewNumber) {
+      calcCurrentValue = num
+      calcNewNumber = false
+    } else {
+      calcCurrentValue = calcCurrentValue === '0' ? num : calcCurrentValue + num
+    }
+    updateCalcDisplay(calcCurrentValue)
+  }
+
+  function handleCalcOperator(op: string) {
+    if (calcOperator && !calcNewNumber) {
+      calculateResult()
+    }
+    calcPreviousValue = calcCurrentValue
+    calcOperator = op
+    calcNewNumber = true
+  }
+
+  function calculateResult() {
+    const prev = parseFloat(calcPreviousValue)
+    const current = parseFloat(calcCurrentValue)
+    let result = 0
+
+    switch (calcOperator) {
+      case '+':
+        result = prev + current
+        break
+      case '−':
+        result = prev - current
+        break
+      case '×':
+        result = prev * current
+        break
+      case '÷':
+        result = current !== 0 ? prev / current : 0
+        break
+      case '%':
+        result = prev % current
+        break
+    }
+
+    calcCurrentValue = result.toString()
+    calcOperator = ''
+    calcNewNumber = true
+    updateCalcDisplay(calcCurrentValue)
+  }
+
+  function clearCalc() {
+    calcCurrentValue = '0'
+    updateCalcDisplay(calcCurrentValue)
+    calcNewNumber = true
+  }
+
+  function clearAllCalc() {
+    calcCurrentValue = '0'
+    calcPreviousValue = ''
+    calcOperator = ''
+    calcNewNumber = true
+    updateCalcDisplay(calcCurrentValue)
+  }
+
+  // Calculator button event listeners
+  const calcButtons = document.querySelectorAll('.calc-btn')
+  calcButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.textContent?.trim()
+      if (!text) return
+
+      // Numbers and decimal
+      if (/^[0-9.]$/.test(text)) {
+        handleCalcNumber(text)
+        playSound('click')
+      }
+      // Operators
+      else if (text === '+' || text === '−' || text === '×' || text === '÷') {
+        handleCalcOperator(text)
+        playSound('click')
+      }
+      // Equals
+      else if (text === '=') {
+        if (calcOperator) {
+          calculateResult()
+          playSound('click')
+        }
+      }
+      // Percentage
+      else if (text === '%') {
+        if (calcOperator) {
+          handleCalcOperator('%')
+        } else {
+          calcCurrentValue = (parseFloat(calcCurrentValue) / 100).toString()
+          updateCalcDisplay(calcCurrentValue)
+        }
+        playSound('click')
+      }
+      // Clear
+      else if (text === 'C') {
+        clearCalc()
+        playSound('click')
+      }
+      // All Clear
+      else if (text === 'AC') {
+        clearAllCalc()
+        playSound('click')
+      }
+    })
+  })
+
+  // Keyboard support for calculator
+  document.addEventListener('keydown', (e) => {
+    // Only handle if calculator window is open
+    const calcWindow = document.getElementById('window-calculator')
+    if (!calcWindow || calcWindow.classList.contains('hidden')) return
+
+    const key = e.key
+
+    if (/^[0-9.]$/.test(key)) {
+      handleCalcNumber(key)
+      playSound('click')
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+      const op = key === '*' ? '×' : key === '/' ? '÷' : key === '-' ? '−' : key
+      handleCalcOperator(op)
+      playSound('click')
+    } else if (key === 'Enter' || key === '=') {
+      if (calcOperator) {
+        calculateResult()
+        playSound('click')
+      }
+    } else if (key === 'Escape') {
+      clearAllCalc()
+      playSound('click')
+    } else if (key === 'Backspace') {
+      if (calcCurrentValue.length > 1) {
+        calcCurrentValue = calcCurrentValue.slice(0, -1)
+      } else {
+        calcCurrentValue = '0'
+      }
+      updateCalcDisplay(calcCurrentValue)
+      playSound('click')
+    } else if (key === '%') {
+      if (calcOperator) {
+        handleCalcOperator('%')
+      } else {
+        calcCurrentValue = (parseFloat(calcCurrentValue) / 100).toString()
+        updateCalcDisplay(calcCurrentValue)
+      }
+      playSound('click')
+    }
+  })
+
+  // 🎨 PAINT APP - CANVAS DRAWING
+  const paintCanvas = document.getElementById('paint-canvas') as HTMLCanvasElement | null
+  const brushSizeSlider = document.getElementById('brush-size') as HTMLInputElement | null
+  const brushSizeDisplay = document.getElementById('brush-size-display')
+  const clearCanvasBtn = document.getElementById('clear-canvas')
+  const downloadCanvasBtn = document.getElementById('download-canvas')
+  const colorButtons = document.querySelectorAll('.color-btn')
+
+  let paintCtx: CanvasRenderingContext2D | null = null
+  let paintIsDrawing = false
+  let paintBrushSize = 5
+  let paintColor = '#ffffff'
+
+  if (paintCanvas) {
+    paintCtx = paintCanvas.getContext('2d')
+    paintCanvas.width = paintCanvas.offsetWidth
+    paintCanvas.height = 400
+
+    // Brush size change
+    brushSizeSlider?.addEventListener('input', (e) => {
+      paintBrushSize = parseInt((e.target as HTMLInputElement).value)
+      if (brushSizeDisplay) {
+        brushSizeDisplay.textContent = `${paintBrushSize}px`
+      }
+    })
+
+    // Color selection
+    colorButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        colorButtons.forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        paintColor = btn.getAttribute('data-color') || '#ffffff'
+      })
+    })
+
+    // Drawing functions
+    function startDrawing(e: MouseEvent | TouchEvent) {
+      paintIsDrawing = true
+      draw(e)
+    }
+
+    function stopDrawing() {
+      paintIsDrawing = false
+      if (paintCtx) {
+        paintCtx.beginPath()
+      }
+    }
+
+    function draw(e: MouseEvent | TouchEvent) {
+      if (!paintIsDrawing || !paintCtx) return
+
+      const rect = paintCanvas!.getBoundingClientRect()
+      const x = ('touches' in e ? e.touches[0].clientX : e.clientX) - rect.left
+      const y = ('touches' in e ? e.touches[0].clientY : e.clientY) - rect.top
+
+      paintCtx.lineWidth = paintBrushSize
+      paintCtx.lineCap = 'round'
+      paintCtx.strokeStyle = paintColor
+
+      paintCtx.lineTo(x, y)
+      paintCtx.stroke()
+      paintCtx.beginPath()
+      paintCtx.moveTo(x, y)
+    }
+
+    // Mouse events
+    paintCanvas.addEventListener('mousedown', startDrawing)
+    paintCanvas.addEventListener('mouseup', stopDrawing)
+    paintCanvas.addEventListener('mousemove', draw)
+    paintCanvas.addEventListener('mouseleave', stopDrawing)
+
+    // Touch events for mobile
+    paintCanvas.addEventListener('touchstart', (e) => {
+      e.preventDefault()
+      startDrawing(e)
+    })
+    paintCanvas.addEventListener('touchend', stopDrawing)
+    paintCanvas.addEventListener('touchmove', (e) => {
+      e.preventDefault()
+      draw(e)
+    })
+
+    // Clear canvas
+    clearCanvasBtn?.addEventListener('click', () => {
+      if (paintCtx) {
+        paintCtx.clearRect(0, 0, paintCanvas!.width, paintCanvas!.height)
+        playSound('click')
+      }
+    })
+
+    // Download canvas
+    downloadCanvasBtn?.addEventListener('click', () => {
+      const link = document.createElement('a')
+      link.download = 'yuki-paint.png'
+      link.href = paintCanvas!.toDataURL()
+      link.click()
+      playSound('click')
+    })
+  }
+
+  // 📝 NOTEPAD APP - TEXT EDITOR WITH LOCALSTORAGE
+  const notepadTextarea = document.getElementById('notepad-textarea') as HTMLTextAreaElement | null
+  const notepadStats = document.getElementById('notepad-stats')
+  const notepadSaveBtn = document.getElementById('notepad-save')
+  const notepadExportBtn = document.getElementById('notepad-export')
+
+  // Load saved notes
+  if (notepadTextarea) {
+    const savedNotes = localStorage.getItem('yukios-notes')
+    if (savedNotes) {
+      notepadTextarea.value = savedNotes
+    }
+
+    // Update stats
+    function updateNotepadStats() {
+      const text = notepadTextarea!.value
+      const chars = text.length
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0
+      if (notepadStats) {
+        notepadStats.textContent = `Characters: ${chars} | Words: ${words}`
+      }
+    }
+
+    // Auto-update stats on input
+    notepadTextarea.addEventListener('input', () => {
+      updateNotepadStats()
+      // Auto-save to localStorage
+      localStorage.setItem('yukios-notes', notepadTextarea!.value)
+    })
+
+    // Initial stats
+    updateNotepadStats()
+
+    // Manual save button
+    notepadSaveBtn?.addEventListener('click', () => {
+      localStorage.setItem('yukios-notes', notepadTextarea!.value)
+      playSound('click')
+      showNotification('Notepad', 'Notes saved successfully! 📝', 'success')
+    })
+
+    // Export as .txt file
+    notepadExportBtn?.addEventListener('click', () => {
+      const text = notepadTextarea!.value
+      const blob = new Blob([text], { type: 'text/plain' })
+      const link = document.createElement('a')
+      link.download = 'yukios-notes.txt'
+      link.href = URL.createObjectURL(blob)
+      link.click()
+      playSound('click')
+      showNotification('Notepad', 'File exported successfully! 💾', 'success')
+    })
+  }
+
+  // ⚙️ SETTINGS PANEL - SYSTEM CONFIGURATION
+  const settingsVolume = document.getElementById('settings-volume') as HTMLInputElement | null
+  const settingsVolumeDisplay = document.getElementById('settings-volume-display')
+  const settingsAnimation = document.getElementById('settings-animation') as HTMLInputElement | null
+  const settingsAnimationDisplay = document.getElementById('settings-animation-display')
+  const settingsEffects = document.getElementById('settings-effects') as HTMLInputElement | null
+  const settingsLanguage = document.getElementById('settings-language') as HTMLSelectElement | null
+  const settingsReset = document.getElementById('settings-reset')
+
+  // Volume control
+  settingsVolume?.addEventListener('input', (e) => {
+    const volume = (e.target as HTMLInputElement).value
+    if (settingsVolumeDisplay) {
+      settingsVolumeDisplay.textContent = `${volume}%`
+    }
+    // Store in localStorage
+    localStorage.setItem('yukios-volume', volume)
+  })
+
+  // Animation speed
+  settingsAnimation?.addEventListener('input', (e) => {
+    const speed = (e.target as HTMLInputElement).value
+    if (settingsAnimationDisplay) {
+      settingsAnimationDisplay.textContent = `${speed}x`
+    }
+    // Apply animation speed
+    document.documentElement.style.setProperty('--animation-speed', speed)
+    localStorage.setItem('yukios-animation-speed', speed)
+  })
+
+  // Background effects toggle
+  settingsEffects?.addEventListener('change', (e) => {
+    const enabled = (e.target as HTMLInputElement).checked
+    const desktop = document.getElementById('desktop')
+    if (desktop) {
+      if (enabled) {
+        desktop.style.opacity = '1'
+      } else {
+        desktop.style.opacity = '0.95'
+      }
+    }
+    localStorage.setItem('yukios-effects', enabled ? 'true' : 'false')
+  })
+
+  // Language selector
+  settingsLanguage?.addEventListener('change', (e) => {
+    const language = (e.target as HTMLSelectElement).value
+    localStorage.setItem('yukios-language', language)
+    showNotification('Settings', `Language changed to ${language === 'en' ? 'English' : 'Bahasa Indonesia'}! 🌐`, 'info')
+  })
+
+  // Reset to defaults
+  settingsReset?.addEventListener('click', () => {
+    if (confirm('Reset all settings to default values?')) {
+      localStorage.removeItem('yukios-volume')
+      localStorage.removeItem('yukios-animation-speed')
+      localStorage.removeItem('yukios-effects')
+      localStorage.removeItem('yukios-language')
+
+      // Reset UI
+      if (settingsVolume) settingsVolume.value = '100'
+      if (settingsVolumeDisplay) settingsVolumeDisplay.textContent = '100%'
+      if (settingsAnimation) settingsAnimation.value = '1'
+      if (settingsAnimationDisplay) settingsAnimationDisplay.textContent = '1x'
+      if (settingsEffects) settingsEffects.checked = true
+      if (settingsLanguage) settingsLanguage.value = 'en'
+
+      playSound('click')
+      showNotification('Settings', 'All settings reset to defaults! ✨', 'success')
+    }
+  })
+
+  // Load saved settings on startup
+  function loadSettings() {
+    const volume = localStorage.getItem('yukios-volume')
+    if (volume && settingsVolume && settingsVolumeDisplay) {
+      settingsVolume.value = volume
+      settingsVolumeDisplay.textContent = `${volume}%`
+    }
+
+    const speed = localStorage.getItem('yukios-animation-speed')
+    if (speed && settingsAnimation && settingsAnimationDisplay) {
+      settingsAnimation.value = speed
+      settingsAnimationDisplay.textContent = `${speed}x`
+      document.documentElement.style.setProperty('--animation-speed', speed)
+    }
+
+    const effects = localStorage.getItem('yukios-effects')
+    if (effects && settingsEffects) {
+      settingsEffects.checked = effects === 'true'
+    }
+
+    const language = localStorage.getItem('yukios-language')
+    if (language && settingsLanguage) {
+      settingsLanguage.value = language
+    }
+  }
+
+  // Load settings on boot
+  loadSettings()
+
+  // 💻 YUKI TERMINAL AI (Intelligent Local Agent)
+  const terminalInput = document.getElementById('terminal-input') as HTMLInputElement | null
+  const terminalOutput = document.getElementById('terminal-output')
+
+  // Yuki AI Knowledge Base - Comprehensive responses
+  const yukiKnowledge = {
+    greetings: [
+      "Halo! 💜 Saya Yuki, AI assistant untuk Yuki OS! Senang bertemu dengan Anda! Ada yang bisa saya bantu hari ini?",
+      "Konnichiwa! ✨ I'm Yuki, your kawaii cyberdeck companion! How can I assist you today?",
+      "Hey there! 🎮 Yuki here, ready to help you navigate through the Yuki OS experience! What would you like to know?",
+      "Yo! 🚀 Welcome to Yuki OS! I'm Yuki, your friendly AI guide. Ask me anything about our project!",
+    ],
+
+    about: [
+      "I'm Yuki, the AI soul of Yuki OS! 💜 Born from 72 hours of non-stop coding, countless energy drinks, and pure passion for blockchain technology. I was created to help users navigate this retro-cyber vaporwave operating system built on Solana. Think of me as your kawaii tech companion! ✨",
+      "Yuki desu! 🎮 I'm an advanced AI assistant specializing in Yuki OS, Solana blockchain, and cryptocurrency. My purpose is to make your journey through our kawaii cyberdeck as smooth and enjoyable as possible. I can answer questions, explain features, and even chat about anime and tech culture! 💜",
+    ],
+
+    yukios: [
+      "Yuki OS is a revolutionary retro-cyber operating system interface! 🚀\n\nKey Features:\n• Windows 95-inspired UI with vaporwave aesthetics 💜\n• Built on Solana blockchain for ultra-fast performance ⚡\n• Integrated $YUKIOS token ecosystem 💎\n• Interactive desktop environment with multiple apps 🎮\n• Real-time SOL price tracking 📊\n\nIt's where nostalgia meets cutting-edge blockchain technology! ✨",
+      "Yuki OS v1.0 'Kawaii Cyberdeck Edition' adalah sistem operasi konsep yang menggabungkan:\n\n✨ Estetika retro Windows 95\n🌊 Vibe vaporwave yang aesthetic\n⚡ Teknologi Solana blockchain\n💜 Komunitas crypto yang passionate\n\nDibuat dengan 72 jam coding marathon untuk memberikan pengalaman unik di dunia crypto! 🚀",
+    ],
+
+    token: [
+      "Let me tell you about $YUKIOS token! 💎\n\n🎯 Ticker: $YUKIOS\n📊 Total Supply: 1,000,000,000 (1 billion)\n💚 Tax: 0% Buy / 0% Sell (completely fee-free!)\n🔥 Liquidity: BURNED (locked forever)\n🚫 Mint Authority: REVOKED (no new tokens ever)\n⚡ Chain: Solana (fast & cheap transactions)\n\nIt's designed to be 100% community-owned and transparent! Want to know how to buy?",
+      "$YUKIOS adalah native token dari ekosistem Yuki OS! 🚀\n\nTokenomics yang fair:\n• 1B total supply\n• Zero tax untuk buy/sell\n• Liquidity sudah di-burn permanent\n• Mint authority sudah revoked\n• Built on Solana untuk speed maksimal\n\nSemua dirancang untuk keamanan dan transparansi komunitas! 💜",
+    ],
+
+    solana: [
+      "Solana is one of the fastest blockchains in the world! ⚡\n\nWhy we chose Solana:\n• Ultra-fast transactions (400ms block time)\n• Extremely low fees (< $0.01 per transaction)\n• Massive scalability (65,000+ TPS theoretical)\n• Growing DeFi & NFT ecosystem\n• Energy efficient Proof of Stake\n\nPerfect for Yuki OS to run smoothly without breaking the bank! 🚀",
+      "Solana adalah blockchain yang kami pilih karena kecepatannya yang luar biasa! ⚡\n\nKeunggulan Solana:\n✨ Transaksi super cepat (< 1 detik)\n💰 Biaya sangat murah\n🌊 Scalability tinggi\n🔒 Secure dengan PoS mechanism\n\nSempurna untuk $YUKIOS token ecosystem! 💜",
+    ],
+
+    buy: [
+      "Ready to grab some $YUKIOS? 🚀\n\nHere's how:\n1. Make sure you have SOL in your wallet (Phantom, Solflare, etc.)\n2. Click the 'PUMP.EXE' icon on the desktop 🎮\n3. Or visit our Pump.fun page directly\n4. Connect your wallet\n5. Swap SOL for $YUKIOS!\n\n⚠️ Always DYOR (Do Your Own Research) and only invest what you can afford to lose! 💜",
+      "Cara beli $YUKIOS token gampang banget! 💎\n\n1️⃣ Setup wallet Solana (Phantom recommended)\n2️⃣ Beli SOL dari exchange\n3️⃣ Klik PUMP.EXE di desktop Yuki OS\n4️⃣ Connect wallet & swap!\n\nJangan lupa: crypto itu risky, hanya invest yang ready untuk loss ya! 🚀",
+    ],
+
+    features: [
+      "Yuki OS Desktop Features! 🎮\n\n📁 My Documents - Read about the project story\n📈 Task Manager - View tokenomics & system stats\n🌐 Netscape - Social media links & community\n🚀 PUMP.EXE - Direct link to buy $YUKIOS\n💻 Yuki Terminal - Chat with me! (that's here!)\n🔢 Calculator - Coming soon!\n\nPlus: Real-time SOL price, retro aesthetics, draggable windows! ✨",
+    ],
+
+    community: [
+      "Join the Yuki OS community! 💜\n\n📱 Telegram: Active community chat\n🐦 Twitter/X: Latest updates & announcements\n💬 Discord: Coming soon!\n\nWe're building something special together - a community that values transparency, fun, and innovation in the crypto space! 🚀\n\nClick the Netscape icon to find all our links! 🌐",
+    ],
+
+    team: [
+      "Yuki OS was created by Yuki, our lead developer! 👨‍💻\n\nThe origin story:\n• 72 hours of non-stop coding\n• Powered by energy drinks & determination\n• Inspired by retro computing & vaporwave culture\n• Built with passion for Solana ecosystem\n\nIt's a solo project born from love for crypto and nostalgia! 💜✨",
+    ],
+
+    roadmap: [
+      "Yuki OS Roadmap 🗺️\n\n✅ Phase 1: Launch & Community Building\n• Token deployment on Solana\n• Yuki OS interface release\n• Social media presence\n\n🔄 Phase 2: Expansion (Current)\n• Growing community\n• Partnerships\n• Marketing campaigns\n\n🚀 Phase 3: Future\n• More interactive features\n• NFT integration possibilities\n• Additional utilities\n\nWe're community-driven, so roadmap evolves with your input! 💜",
+    ],
+
+    tech: [
+      "Yuki OS Tech Stack! 💻\n\n🎨 Frontend:\n• Astro v5.16.6 (modern static site framework)\n• TailwindCSS for styling\n• TypeScript for type safety\n\n⛓️ Blockchain:\n• Solana blockchain\n• SPL Token standard\n\n✨ Features:\n• Retro Windows 95 UI design\n• Draggable windows\n• Real-time data fetching\n• Responsive mobile support\n\nAll open-source and built with love! 🚀",
+    ],
+
+    anime: [
+      "Ah, a fellow anime enthusiast! 🎌✨\n\nYuki OS is heavily inspired by:\n• Kawaii aesthetic culture\n• Vaporwave & cyberpunk themes\n• Japanese retro computing\n• Anime UI design patterns\n\nDo you watch seasonal anime? I love tech-themed ones like Steins;Gate! 💜",
+    ],
+
+    jokes: [
+      "Why do blockchain developers prefer dark mode? 🌙\nBecause light attracts bugs, and in crypto, bugs cost millions! 😄",
+      "What's a Solana validator's favorite type of music? 🎵\nHeavy metal... for all those server racks! 🔥😂",
+      "Why did the crypto trader break up with their exchange? 💔\nToo many trust issues and high fees! 😅",
+      "How does Solana stay so fast? ⚡\nIt doesn't skip leg day at the blockchain gym! 💪😄",
+    ],
+
+    ai: [
+      "AI (Artificial Intelligence) is revolutionizing how we interact with technology! 🤖\n\nKey AI Technologies:\n• Machine Learning - Algorithms that learn from data\n• Large Language Models (LLMs) - Like GPT-4, Claude, Gemini\n• Neural Networks - Inspired by human brain\n• Computer Vision - AI that can 'see' images\n• Natural Language Processing - Understanding human language\n\nAI is powering everything from chatbots to self-driving cars! In Web3, AI helps with:\n✨ Smart contract analysis\n📊 Trading bots & predictive analytics\n🔒 Security & fraud detection\n\nThe future is AI + Blockchain! 💜",
+      "Artificial Intelligence sedang mengubah dunia! 🚀\n\nTren AI Terkini:\n• Generative AI (ChatGPT, Midjourney, Stable Diffusion)\n• AI Agents - Autonomous AI that can take actions\n• Multi-modal AI - Can process text, images, audio\n• Open-source models (LLaMA, Mistral)\n\nDi Web3, AI digunakan untuk:\n💎 NFT generation\n📈 DeFi trading strategies\n🎮 Gaming NPCs\n🔐 Smart contract auditing\n\nKombinasi AI + Crypto = Masa depan! ✨",
+    ],
+
+    web2: [
+      "Web2 is the current internet we use daily! 🌐\n\nCharacteristics:\n• Centralized platforms (Facebook, Google, Twitter)\n• User-generated content\n• Cloud computing & SaaS\n• Mobile-first applications\n• Social media & interactive websites\n\nPros:\n✅ Easy to use\n✅ Rich features\n✅ Fast development\n\nCons:\n❌ Data owned by companies\n❌ Censorship risks\n❌ Privacy concerns\n❌ Platform monopolies\n\nWeb2 brought us social networks, but Web3 brings ownership! 💜",
+      "Web2 adalah internet yang kita gunakan sehari-hari! 📱\n\nContoh Platform Web2:\n• Social Media: Facebook, Instagram, TikTok\n• Content: YouTube, Netflix, Spotify\n• E-commerce: Amazon, Shopify\n• Cloud: AWS, Google Cloud\n\nMasalah Web2:\n🔒 Data kita dikontrol perusahaan\n💰 Monetisasi dari iklan & data kita\n📊 Algoritma yang opaque\n🚫 Bisa di-ban kapan saja\n\nMakanya Web3 penting - memberikan kontrol ke user! 🚀",
+    ],
+
+    web3: [
+      "Web3 is the decentralized internet of the future! 🚀\n\nCore Principles:\n🔐 Decentralization - No single authority\n🔑 Self-custody - You own your data & assets\n🤝 Trustless - Smart contracts, not intermediaries\n💎 Token economy - Native digital ownership\n🌐 Permissionless - Anyone can participate\n\nKey Technologies:\n• Blockchain (Ethereum, Solana, etc.)\n• Smart Contracts\n• DeFi (Decentralized Finance)\n• NFTs (Digital ownership)\n• DAOs (Decentralized governance)\n• IPFS (Distributed storage)\n\nWeb3 = Read, Write, Own! 💜",
+      "Web3 adalah evolusi internet menuju desentralisasi! ⚡\n\nPerbedaan Web2 vs Web3:\n\nWeb2:\n❌ Perusahaan kontrol data\n❌ Platform bisa ban user\n❌ Profit ke shareholder\n\nWeb3:\n✅ User kontrol data sendiri\n✅ Censorship-resistant\n✅ Value ke community (token)\n\nAplikasi Web3:\n💰 DeFi - Finance tanpa bank\n🎨 NFT - Kepemilikan digital\n🎮 GameFi - Play-to-earn\n🏛️ DAO - Organisasi terdesentralisasi\n\nYuki OS adalah bagian dari Web3 revolution! 💜",
+    ],
+
+    defi: [
+      "DeFi (Decentralized Finance) is banking without banks! 💰\n\nKey DeFi Applications:\n• Lending/Borrowing - Aave, Compound\n• DEX (Decentralized Exchanges) - Uniswap, PancakeSwap\n• Stablecoins - USDC, DAI\n• Yield Farming - Earn interest on crypto\n• Derivatives - Perpetual futures, options\n\nOn Solana:\n⚡ Jupiter - Best DEX aggregator\n📊 Marinade - Liquid staking\n💎 Raydium - AMM & liquidity\n\nAdvantages:\n✅ 24/7 global access\n✅ No KYC required\n✅ Transparent on-chain\n✅ Composability (Money Legos)\n\nDeFi is revolutionizing finance! 🚀",
+    ],
+
+    nft: [
+      "NFTs (Non-Fungible Tokens) represent unique digital ownership! 🎨\n\nUse Cases:\n• Digital Art - Provable ownership\n• Gaming Assets - In-game items you actually own\n• Music & Media - Direct artist support\n• Domain Names - .sol, .eth domains\n• Membership & Access - Exclusive communities\n• Real-world Assets - Property, tickets\n\nOn Solana:\n✨ Super low minting costs (~$0.01)\n⚡ Fast transactions\n🎮 Popular for gaming NFTs\n\nNFT Standards:\n• SPL Token (Solana)\n• ERC-721 (Ethereum)\n• Compressed NFTs (cNFTs)\n\nNFTs aren't just JPEGs - they're programmable ownership! 💜",
+    ],
+
+    dao: [
+      "DAOs (Decentralized Autonomous Organizations) are internet-native organizations! 🏛️\n\nHow DAOs Work:\n1. Treasury in smart contract 💰\n2. Governance tokens for voting 🗳️\n3. Proposals submitted on-chain 📝\n4. Community votes on decisions ✅\n5. Automatic execution via code 🤖\n\nTypes of DAOs:\n• Protocol DAOs - Govern DeFi protocols\n• Investment DAOs - Collective investing\n• Social DAOs - Community & networking\n• Collector DAOs - Art & NFT curation\n\nBenefits:\n✨ Transparent governance\n🌍 Global participation\n💎 Aligned incentives\n🔓 Permissionless\n\nThe future of organizations is decentralized! 🚀",
+    ],
+
+    blockchain: [
+      "Blockchain is a distributed ledger technology! ⛓️\n\nHow it Works:\n1. Transactions grouped into blocks 📦\n2. Blocks linked cryptographically 🔗\n3. Distributed across network nodes 🌐\n4. Consensus validates transactions ✅\n5. Immutable once confirmed 🔒\n\nTypes of Blockchains:\n• Layer 1 - Base chains (Solana, Ethereum, Bitcoin)\n• Layer 2 - Scaling solutions (Arbitrum, Optimism)\n• Sidechains - Independent chains\n\nConsensus Mechanisms:\n• Proof of Work (Bitcoin) ⛏️\n• Proof of Stake (Ethereum, Solana) 🏛️\n• Proof of History (Solana) ⏰\n\nBlockchain = Trust through mathematics! 💜",
+    ],
+
+    metaverse: [
+      "The Metaverse is the convergence of virtual worlds! 🌐\n\nKey Components:\n• VR/AR - Immersive experiences 🥽\n• Digital Identity - Avatars & profiles 🎭\n• Virtual Economy - Crypto & NFTs 💰\n• Social Interaction - Real-time communication 💬\n• User-generated content - Build & create ✨\n\nWeb3 Metaverse Projects:\n• Decentraland - Virtual land ownership\n• The Sandbox - Gaming metaverse\n• Somnium Space - VR world\n• Star Atlas (Solana) - Space exploration\n\nWhy Web3 Matters for Metaverse:\n✅ True digital ownership\n✅ Interoperability across worlds\n✅ Creator economy\n✅ Decentralized governance\n\nThe future is immersive & decentralized! 🚀",
+    ],
+
+    smartcontracts: [
+      "Smart Contracts are self-executing code on blockchain! 📜\n\nHow They Work:\n1. Code deployed to blockchain 💻\n2. Triggered by conditions (if-then) 🔄\n3. Automatically execute actions ⚡\n4. Immutable & transparent 🔒\n5. No intermediaries needed 🤝\n\nUse Cases:\n• DeFi protocols (lending, swaps)\n• NFT minting & royalties\n• Token launches & vesting\n• DAO governance\n• Gaming logic\n\nSolana Smart Contracts:\n✨ Written in Rust\n⚡ Ultra-fast execution\n💰 Low transaction costs\n🔧 Anchor framework for development\n\nSmart contracts = Programmable money! 💜",
+    ],
+
+    crypto: [
+      "Cryptocurrency is digital money on blockchain! 💰\n\nTypes of Crypto:\n• Bitcoin (BTC) - Digital gold, store of value\n• Ethereum (ETH) - Smart contract platform\n• Solana (SOL) - High-speed blockchain\n• Stablecoins (USDC, USDT) - Pegged to USD\n• Altcoins - Alternative cryptocurrencies\n\nKey Concepts:\n🔑 Wallets - Store your crypto (Phantom, MetaMask)\n📊 Exchanges - Buy/sell crypto (Binance, Coinbase)\n⛏️ Mining/Staking - Secure network & earn rewards\n💱 Trading - Spot, futures, derivatives\n\nWhy Crypto Matters:\n✅ Financial sovereignty\n✅ Borderless payments\n✅ Inflation hedge\n✅ Programmable money\n\nCrypto is the future of finance! 🚀",
+    ],
+
+    ai_web3: [
+      "AI + Web3 is a powerful combination! 🤖⛓️\n\nIntersection of AI & Web3:\n\n1. AI-powered Trading 📊\n• Predictive analytics for crypto prices\n• Automated trading bots\n• Risk assessment\n\n2. Smart Contract Analysis 🔍\n• AI auditing for vulnerabilities\n• Code optimization\n• Exploit detection\n\n3. Decentralized AI 🌐\n• AI models on blockchain\n• Distributed computing\n• Data marketplaces\n\n4. NFT Generation 🎨\n• AI art (Midjourney, DALL-E)\n• Dynamic NFTs\n• Procedural content\n\nProjects to Watch:\n• Bittensor - Decentralized AI\n• Fetch.ai - Autonomous agents\n• Ocean Protocol - Data marketplace\n\nThe synergy is just beginning! 💜✨",
+    ],
+  }
+
+  function addTerminalLine(text: string, type: 'user' | 'system' | 'yuki' | 'error' = 'system') {
+    if (!terminalOutput) return
+
+    const line = document.createElement('div')
+    line.className = 'terminal-line'
+
+    const colors = {
+      user: 'text-cyan-400',
+      system: 'text-yellow-400',
+      kimi: 'text-purple-400',
+      error: 'text-red-400',
+    }
+
+    const prefix = {
+      user: 'yuki@Yuki OS:~$',
+      system: '[SYSTEM]',
+      kimi: '[KIMI💜]',
+      error: '[ERROR]',
+    }
+
+    // Escape HTML and preserve line breaks
+    const escapedText = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\n/g, '<br>')
+
+    line.innerHTML = `<span class="${colors[type]} font-bold">${prefix[type]}</span> <span class="${type === 'user' ? 'text-green-400' : 'text-gray-300'}">${escapedText}</span>`
+
+    terminalOutput.appendChild(line)
+    terminalOutput.scrollTop = terminalOutput.scrollHeight
+  }
+
+  function getRandomResponse(category: keyof typeof yukiKnowledge): string {
+    const responses = yukiKnowledge[category]
+    return responses[Math.floor(Math.random() * responses.length)]
+  }
+
+  function analyzeIntent(input: string): string {
+    const lower = input.toLowerCase()
+
+    // Greetings
+    if (['hello', 'hi', 'hey', 'halo', 'konnichiwa', 'yo', 'sup', 'hai'].some(g => lower.includes(g))) {
+      return getRandomResponse('greetings')
+    }
+
+    // About Yuki
+    if (['who are you', 'what are you', 'about you', 'siapa kamu', 'introduce'].some(k => lower.includes(k))) {
+      return getRandomResponse('about')
+    }
+
+    // About Yuki OS
+    if (['kimios', 'kimi os', 'what is this', 'apa itu yukios', 'about yukios'].some(k => lower.includes(k))) {
+      return getRandomResponse('kimios')
+    }
+
+    // Token info
+    if (['token', 'yukios token', '$kimios', 'coin', 'tokenomics', 'supply'].some(k => lower.includes(k))) {
+      return getRandomResponse('token')
+    }
+
+    // Solana
+    if (['solana', 'sol', 'blockchain', 'chain'].some(k => lower.includes(k))) {
+      return getRandomResponse('solana')
+    }
+
+    // How to buy
+    if (['buy', 'purchase', 'get', 'beli', 'how to buy', 'cara beli'].some(k => lower.includes(k))) {
+      return getRandomResponse('buy')
+    }
+
+    // Features
+    if (['feature', 'what can', 'capabilities', 'fitur', 'app'].some(k => lower.includes(k))) {
+      return getRandomResponse('features')
+    }
+
+    // Community
+    if (['community', 'social', 'telegram', 'discord', 'twitter', 'komunitas'].some(k => lower.includes(k))) {
+      return getRandomResponse('community')
+    }
+
+    // Team
+    if (['team', 'developer', 'creator', 'who made', 'founder'].some(k => lower.includes(k))) {
+      return getRandomResponse('team')
+    }
+
+    // Roadmap
+    if (['roadmap', 'plan', 'future', 'upcoming', 'next'].some(k => lower.includes(k))) {
+      return getRandomResponse('roadmap')
+    }
+
+    // Tech
+    if (['tech', 'technology', 'built', 'stack', 'code', 'programming'].some(k => lower.includes(k))) {
+      return getRandomResponse('tech')
+    }
+
+    // Anime
+    if (['anime', 'manga', 'kawaii', 'japanese', 'japan'].some(k => lower.includes(k))) {
+      return getRandomResponse('anime')
+    }
+
+    // Jokes
+    if (['joke', 'funny', 'laugh', 'humor', 'lucu'].some(k => lower.includes(k))) {
+      return getRandomResponse('jokes')
+    }
+
+    // AI
+    if (['ai', 'artificial intelligence', 'machine learning', 'ml', 'llm', 'gpt', 'chatgpt', 'claude'].some(k => lower.includes(k))) {
+      return getRandomResponse('ai')
+    }
+
+    // Web2
+    if (['web2', 'web 2', 'traditional web', 'centralized'].some(k => lower.includes(k))) {
+      return getRandomResponse('web2')
+    }
+
+    // Web3
+    if (['web3', 'web 3', 'decentralized', 'dapp'].some(k => lower.includes(k))) {
+      return getRandomResponse('web3')
+    }
+
+    // DeFi
+    if (['defi', 'decentralized finance', 'dex', 'yield', 'lending', 'liquidity'].some(k => lower.includes(k))) {
+      return getRandomResponse('defi')
+    }
+
+    // NFT
+    if (['nft', 'non fungible', 'digital art', 'collectible'].some(k => lower.includes(k))) {
+      return getRandomResponse('nft')
+    }
+
+    // DAO
+    if (['dao', 'decentralized autonomous', 'governance', 'voting'].some(k => lower.includes(k))) {
+      return getRandomResponse('dao')
+    }
+
+    // Blockchain
+    if (['blockchain', 'distributed ledger', 'consensus', 'proof of stake', 'proof of work'].some(k => lower.includes(k))) {
+      return getRandomResponse('blockchain')
+    }
+
+    // Metaverse
+    if (['metaverse', 'virtual world', 'vr', 'ar', 'virtual reality'].some(k => lower.includes(k))) {
+      return getRandomResponse('metaverse')
+    }
+
+    // Smart Contracts
+    if (['smart contract', 'contract', 'solidity', 'rust contract'].some(k => lower.includes(k))) {
+      return getRandomResponse('smartcontracts')
+    }
+
+    // Crypto general
+    if (['crypto', 'cryptocurrency', 'bitcoin', 'btc', 'ethereum', 'eth', 'wallet'].some(k => lower.includes(k))) {
+      return getRandomResponse('crypto')
+    }
+
+    // AI + Web3
+    if (['ai web3', 'ai crypto', 'ai blockchain', 'artificial intelligence web3'].some(k => lower.includes(k))) {
+      return getRandomResponse('ai_web3')
+    }
+
+    // Bye
+    if (['bye', 'goodbye', 'see you', 'exit', 'quit', 'dadah'].some(k => lower.includes(k))) {
+      const farewells = [
+        "Sayonara! 💜 Come back anytime you need me! Feel free to explore more of Yuki OS!",
+        "See ya! 🚀 Keep hodling and stay kawaii! Don't forget to check out our community!",
+        "Bye bye! ✨ Remember: WAGMI (We're All Gonna Make It)! 💎🙌",
+      ]
+      return farewells[Math.floor(Math.random() * farewells.length)]
+    }
+
+    // Default intelligent fallback
+    const fallbacks = [
+      `Interesting question! 💭 While I don't have specific info about "${input}", I can tell you about:\n\n💜 Yuki OS features - type 'features'\n🚀 How to buy $YUKIOS - type 'buy'\n📊 Tokenomics - type 'token'\n🌐 Community links - type 'community'\n\nOr just ask me anything else! ✨`,
+      `Hmm, I'm not sure about "${input}" specifically! 🤔\n\nBut I'm an expert on:\n• Yuki OS system and features\n• $YUKIOS token information\n• Solana blockchain\n• Our community and roadmap\n\nTry asking about any of these topics! 💜`,
+      `Good question! Though I don't have details on "${input}", I'm here to help with:\n\n🎮 Yuki OS features and apps\n💎 Token information\n⚡ Solana and crypto topics\n🌸 General crypto discussion\n\nWhat would you like to know? ✨`,
+    ]
+    return fallbacks[Math.floor(Math.random() * fallbacks.length)]
+  }
+
+  function processYukiCommand(input: string) {
+    const command = input.toLowerCase().trim()
+
+    addTerminalLine(input, 'user')
+
+    // Handle special commands
+    if (command === 'clear') {
+      if (terminalOutput) terminalOutput.innerHTML = ''
+      addTerminalLine('Terminal cleared! ✨', 'system')
+      return
+    }
+
+    if (command === 'help') {
+      addTerminalLine('Yuki Terminal v1.0 - Intelligent AI Agent 🚀\n\nCommands:\n• clear - Clear terminal\n• help - Show this message\n\nTopics I can discuss:\n\n🎮 Yuki OS & Project:\n• Yuki OS features & info\n• $YUKIOS token & tokenomics\n• Community & social links\n• Roadmap & team\n\n⛓️ Blockchain & Crypto:\n• Solana blockchain\n• Cryptocurrency basics\n• DeFi (Decentralized Finance)\n• NFTs & digital ownership\n• Smart contracts\n• DAOs & governance\n\n🌐 Web Technology:\n• AI & Machine Learning\n• Web2 vs Web3\n• AI + Web3 intersection\n• Metaverse & VR/AR\n\n💻 Tech & Development:\n• Tech stack\n• Blockchain technology\n\nJust chat naturally - I understand context! ✨', 'yuki')
+      return
+    }
+
+    // Simulate thinking delay for natural feel
+    setTimeout(() => {
+      const response = analyzeIntent(input)
+      addTerminalLine(response, 'yuki')
+    }, 300 + Math.random() * 700)
+  }
+
+  // Terminal input handler
+  if (terminalInput) {
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const input = terminalInput.value.trim()
+        if (input) {
+          processYukiCommand(input)
+          terminalInput.value = ''
+        }
+      }
+    })
+
+    // Focus terminal input when window opens
+    const terminalWindow = document.getElementById('window-terminal')
+    if (terminalWindow) {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const target = mutation.target as HTMLElement
+            if (!target.classList.contains('hidden')) {
+              setTimeout(() => terminalInput?.focus(), 100)
+            }
+          }
+        })
+      })
+      observer.observe(terminalWindow, { attributes: true })
+    }
+  }
+
+  // 🥚 EASTER EGGS & HIDDEN FEATURES
+
+  // Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A
+  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+  let konamiProgress = 0
+  let konamiActive = false
+
+  document.addEventListener('keydown', (e) => {
+    const key = e.key.toLowerCase()
+
+    if (key === konamiCode[konamiProgress] || e.key === konamiCode[konamiProgress]) {
+      konamiProgress++
+
+      if (konamiProgress === konamiCode.length) {
+        // Konami Code activated!
+        konamiProgress = 0
+        konamiActive = !konamiActive
+
+        const desktop = document.getElementById('desktop')
+        if (desktop) {
+          if (konamiActive) {
+            desktop.classList.add('konami-active')
+            playSound('click')
+
+            // Show secret message
+            const terminalWin = document.getElementById('window-terminal')
+            if (terminalWin && terminalWin.classList.contains('hidden')) {
+              openWindow('terminal')
+              setTimeout(() => {
+                addTerminalLine('🎮 KONAMI CODE ACTIVATED! 🌈', 'system')
+                addTerminalLine('You found the secret! Enjoy the rainbow mode! ✨', 'yuki')
+                addTerminalLine('Press the code again to disable.', 'system')
+              }, 500)
+            }
+          } else {
+            desktop.classList.remove('konami-active')
+            addTerminalLine('Rainbow mode disabled. See you next time! 👋', 'system')
+          }
+        }
+      }
+    } else {
+      konamiProgress = 0
+    }
+  })
+
+  // Double-click on desktop background for secret
+  let clickCount = 0
+  let clickTimer: number | null = null
+
+  desktopEl?.addEventListener('click', (e) => {
+    // Only trigger on direct clicks to desktop, not children
+    if (e.target === desktopEl) {
+      clickCount++
+
+      if (clickCount === 1) {
+        clickTimer = window.setTimeout(() => {
+          clickCount = 0
+        }, 500)
+      } else if (clickCount === 5) {
+        // 5 rapid clicks = secret unlock
+        clearTimeout(clickTimer!)
+        clickCount = 0
+
+        playSound('click')
+        alert('🎉 Secret Found!\n\n"WAGMI" - We\'re All Gonna Make It!\n\nKeep HODLing, keep building, keep believing! 💎🙌\n\n- Yuki Team')
+      }
+    }
+  })
+
+  // 📸 SCREENSHOT & SHARE FEATURE
+  async function captureScreenshot() {
+    try {
+      const desktop = document.getElementById('desktop')
+      if (!desktop) return
+
+      // Simple alert for now - can be enhanced with html2canvas library
+      alert('📸 Screenshot Feature Coming Soon!\n\nThis will allow you to capture your Yuki OS desktop and share it on social media with custom messages! 🚀')
+
+      // TODO: Implement with html2canvas
+      // const canvas = await html2canvas(desktop)
+      // const dataUrl = canvas.toDataURL()
+      // // Share functionality
+    } catch (error) {
+      console.error('Screenshot failed:', error)
+    }
+  }
+
+  // Add keyboard shortcut for screenshot (Ctrl/Cmd + Shift + S)
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 's') {
+      e.preventDefault()
+      captureScreenshot()
+    }
+  })
+
+  // 🎮 LOADING ANIMATIONS & TRANSITIONS
+  // Add pulse animation to PUMP.EXE button
+  const pumpIcon = document.querySelector('[data-window="pump"]')
+  if (pumpIcon) {
+    pumpIcon.classList.add('animate-pulse-glow')
+  }
+
+  // Smooth scroll for terminal
+  if (terminalOutput) {
+    terminalOutput.style.scrollBehavior = 'smooth'
+  }
+
+  // 🔔 NOTIFICATION SYSTEM - Already defined at top
+
+  // Show welcome notification after boot
+  setTimeout(() => {
+    showNotification('Welcome to Yuki OS! 💜', 'Your kawaii cyberdeck is ready. Explore the desktop! 🚀', 'success')
+  }, 4000)
+
+  // 📱 MOBILE OPTIMIZATIONS
+  // Detect mobile and add mobile-specific class
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  if (isMobile && desktopEl) {
+    desktopEl.classList.add('mobile-device')
+
+    // Adjust window sizes for mobile
+    document.querySelectorAll('.window-95').forEach((win) => {
+      if (win instanceof HTMLElement) {
+        win.style.width = '95vw'
+      }
+    })
+  }
+
+  // 💡 HELPFUL TIPS SYSTEM
+  const tips = [
+    "💡 Tip: Press Ctrl+Shift+S to take a screenshot!",
+    "💡 Tip: Try the Konami Code for a surprise! ↑↑↓↓←→←→BA",
+    "💡 Tip: Click 5 times rapidly on the desktop for a secret message!",
+    "💡 Tip: Toggle sound effects with the 🔊 button!",
+    "💡 Tip: Switch between dark and light themes with the 🌙 button!",
+    "💡 Tip: Drag windows around by their title bar!",
+    "💡 Tip: Minimize, maximize, or close windows with the buttons!",
+  ]
+
+  let currentTipIndex = 0
+
+  function showNextTip() {
+    const tip = tips[currentTipIndex]
+    showNotification('Yuki OS Tip', tip, 'info')
+    currentTipIndex = (currentTipIndex + 1) % tips.length
+  }
+
+  // Show first tip after 30 seconds, then every 2 minutes
+  setTimeout(showNextTip, 30000)
+  setInterval(showNextTip, 120000)
+
+  console.log(`
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║   ██╗  ██╗██╗███╗   ███╗██╗ ██████╗ ███████╗              ║
+║   ██║ ██╔╝██║████╗ ████║██║██╔═══██╗██╔════╝              ║
+║   █████╔╝ ██║██╔████╔██║██║██║   ██║███████╗              ║
+║   ██╔═██╗ ██║██║╚██╔╝██║██║██║   ██║╚════██║              ║
+║   ██║  ██╗██║██║ ╚═╝ ██║██║╚██████╔╝███████║              ║
+║   ╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚═╝ ╚═════╝ ╚══════╝              ║
+║                                                              ║
+║   Welcome to Yuki OS v1.0 - The Kawaii Cyberdeck! 💜         ║
+║                                                              ║
+║   Built with 72 hours of coding & love for Solana 🚀        ║
+║                                                              ║
+║   Easter Eggs:                                               ║
+║   • Konami Code: ↑↑↓↓←→←→BA                                ║
+║   • Screenshot: Ctrl+Shift+S                                 ║
+║   • Secret: Click desktop 5 times rapidly                    ║
+║                                                              ║
+║   WAGMI! 💎🙌                                                ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+  `)
+</script>

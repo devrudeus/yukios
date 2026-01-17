@@ -1,0 +1,90 @@
+---
+import Link from '@/components/Link.astro'
+import { NAV_LINKS } from '@/consts'
+import { cn } from '@/lib/utils'
+---
+
+<header id="main-header" transition:persist class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/20 backdrop-blur-lg transition-all duration-300">
+  <div
+    class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8"
+  >
+    <Link href="/" class="hover:opacity-90 group flex shrink-0 items-center transition-all hover:scale-105">
+      <img
+        src="/LOGO.png"
+        alt="Yuki OS Logo"
+        class="h-12 w-auto object-contain transition-all duration-300"
+        id="header-logo"
+        style="filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6)) drop-shadow(0 0 12px rgba(236, 72, 153, 0.4));"
+      />
+    </Link>
+    <div class="flex items-center gap-6">
+      <nav class="flex items-center gap-8 text-sm font-medium">
+        {
+          NAV_LINKS.map((item) => (
+            <Link
+              href={item.href}
+              class={cn(
+                'text-gray-200 hover:text-white relative capitalize transition-all duration-300',
+                'after:bg-gradient-to-r after:from-purple-400 after:via-pink-400 after:to-cyan-400',
+                'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:transition-all hover:after:w-full',
+                item.label === 'Home' && 'hidden sm:inline',
+              )}
+            >
+              {item.label}
+            </Link>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  // 🎬 Navbar scroll effect with smooth transitions
+  let lastScroll = 0
+  const header = document.getElementById('main-header')
+  const logo = document.getElementById('header-logo')
+
+  function handleScroll() {
+    const currentScroll = window.pageYOffset
+
+    if (header && logo) {
+      if (currentScroll > 50) {
+        // Scrolled down - make navbar more solid with glass morphism
+        header.classList.add('bg-black/80', 'shadow-lg', 'shadow-purple-500/20', 'border-purple-500/20')
+        header.classList.remove('bg-black/20', 'border-white/10')
+        logo.classList.add('h-10')
+        logo.classList.remove('h-12')
+      } else {
+        // At top - transparent navbar
+        header.classList.remove('bg-black/80', 'shadow-lg', 'shadow-purple-500/20', 'border-purple-500/20')
+        header.classList.add('bg-black/20', 'border-white/10')
+        logo.classList.remove('h-10')
+        logo.classList.add('h-12')
+      }
+
+      // Hide/show navbar on scroll direction
+      if (currentScroll > lastScroll && currentScroll > 150) {
+        // Scrolling down fast - hide navbar
+        header.style.transform = 'translateY(-100%)'
+      } else {
+        // Scrolling up - show navbar
+        header.style.transform = 'translateY(0)'
+      }
+
+      lastScroll = currentScroll
+    }
+  }
+
+  // Throttle scroll event for better performance
+  let ticking = false
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        handleScroll()
+        ticking = false
+      })
+      ticking = true
+    }
+  })
+</script>

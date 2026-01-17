@@ -1,0 +1,300 @@
+---
+import PageHead from '@/components/PageHead.astro'
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout>
+  <PageHead slot="head" title="Yuki OS - The Kawaii Cyberdeck" />
+
+  <!-- Landing Page -->
+  <div class="min-h-screen bg-black w-full overflow-x-hidden">
+
+    <!-- Video Hero Section with Text Overlay -->
+    <div class="relative w-full min-h-screen overflow-hidden bg-black flex items-center justify-center">
+      <!-- Video Background -->
+      <video
+        id="landing-video"
+        class="absolute inset-0 w-full h-full object-cover opacity-60"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src="/videos/Make_cinematic_style.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Dark overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70"></div>
+
+      <!-- Glow effects -->
+      <div class="absolute top-0 left-0 w-96 h-96 bg-purple-500/20 blur-3xl animate-pulse pointer-events-none" style="animation-duration: 4s;"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/20 blur-3xl animate-pulse pointer-events-none" style="animation-duration: 5s;"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/10 blur-3xl animate-pulse pointer-events-none" style="animation-duration: 6s;"></div>
+
+      <!-- Hero Content Overlay -->
+      <div class="relative z-10 flex flex-col items-center justify-center px-4 py-20 max-w-7xl mx-auto">
+
+        <!-- Logo -->
+        <div class="mb-8 animate-float">
+          <img
+            src="/LOGO.png"
+            alt="Yuki OS Logo"
+            class="w-32 h-32 md:w-48 md:h-48 object-contain"
+            style="filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.8)) drop-shadow(0 0 60px rgba(236, 72, 153, 0.6));"
+          />
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-pulse" style="animation-duration: 3s;">
+          Yuki OS
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-xl md:text-3xl text-cyan-400 text-center mb-4 font-mono font-bold">
+          The Kawaii Cyberdeck OS
+        </p>
+
+        <p class="text-base md:text-lg text-gray-200 text-center mb-3 max-w-3xl leading-relaxed">
+          Experience the future of retro computing with <span class="text-purple-400 font-bold">Yuki OS</span> -
+          a revolutionary web-based operating system that combines the nostalgic charm of
+          <span class="text-pink-400 font-bold">Windows 95</span> with cutting-edge
+          <span class="text-cyan-400 font-bold">cyberpunk aesthetics</span>.
+        </p>
+
+        <p class="text-sm md:text-base text-gray-300 text-center mb-12 max-w-2xl">
+          Built on Solana blockchain with vaporwave aesthetics, interactive desktop environment,
+          and real-time cryptocurrency tracking. Join the kawaii revolution! 🌸✨
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-16">
+        <a
+          href="/yuki-os"
+          class="group px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-lg font-bold text-white text-lg transition-all transform hover:scale-105 shadow-lg shadow-purple-500/50 flex items-center gap-3"
+        >
+          <span>🖥️ Launch Yuki OS Desktop</span>
+          <span class="text-2xl group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+
+        <a
+          href="https://pump.fun/YOUR_TOKEN_ADDRESS"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-8 py-4 bg-gradient-to-r from-green-600 to-lime-600 hover:from-green-500 hover:to-lime-500 rounded-lg font-bold text-white text-lg transition-all transform hover:scale-105 shadow-lg shadow-green-500/50 flex items-center gap-3"
+        >
+          <span>💰 Buy $YUKIOS Token</span>
+        </a>
+      </div>
+
+      </div>
+    </div>
+
+    <!-- Additional Content Section -->
+    <div class="relative bg-black px-4 py-20">
+      <div class="relative z-10 max-w-7xl mx-auto">
+
+      <!-- What is Yuki OS Section -->
+      <div class="mb-16 max-w-4xl w-full mx-auto bg-black/60 backdrop-blur-md border border-purple-500/30 rounded-xl p-8">
+        <h2 class="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          What is Yuki OS? 🤔
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6 text-gray-300 items-start">
+          <div>
+            <h3 class="text-xl font-bold text-cyan-400 mb-3">🎨 Interactive Desktop OS</h3>
+            <p class="text-sm leading-relaxed">
+              A fully functional web-based operating system with draggable windows,
+              file browser, terminal, AI assistant, and more. Experience computing
+              like it's 1995, but with 2026 technology.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-pink-400 mb-3">🪙 Solana-Powered Token</h3>
+            <p class="text-sm leading-relaxed">
+              $YUKIOS is a community-driven cryptocurrency on Solana blockchain.
+              Fair launch, liquidity burned, mint revoked - 100% safe and transparent
+              for the community.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-purple-400 mb-3">🎵 Vaporwave Aesthetics</h3>
+            <p class="text-sm leading-relaxed">
+              Immerse yourself in neon gradients, holographic effects, scanlines,
+              and retro-cyber visuals. Complete with sound effects, theme toggles,
+              and hidden easter eggs!
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-green-400 mb-3">📊 Real-Time Features</h3>
+            <p class="text-sm leading-relaxed">
+              Track $YUKIOS and SOL prices live on the desktop. Integrated notification
+              system, tips, and interactive applications. Everything you need in one
+              kawaii interface.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full mx-auto mb-16">
+
+        <!-- Feature 1 -->
+        <div class="bg-black/40 backdrop-blur-md border border-purple-500/30 rounded-lg p-6 hover:border-purple-500/60 transition-all hover:transform hover:scale-105">
+          <div class="text-5xl mb-4 text-center">⚡</div>
+          <h3 class="text-xl font-bold text-purple-400 mb-3 text-center">Lightning Fast</h3>
+          <p class="text-gray-300 text-sm text-center leading-relaxed">
+            Built on Solana for ultra-fast transactions with minimal fees.
+            Experience speeds up to 65,000 TPS.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-black/40 backdrop-blur-md border border-pink-500/30 rounded-lg p-6 hover:border-pink-500/60 transition-all hover:transform hover:scale-105">
+          <div class="text-5xl mb-4 text-center">🔒</div>
+          <h3 class="text-xl font-bold text-pink-400 mb-3 text-center">100% Secure</h3>
+          <p class="text-gray-300 text-sm text-center leading-relaxed">
+            Liquidity burned 🔥, mint revoked 🚫, 0% tax - completely community
+            owned and safe.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-black/40 backdrop-blur-md border border-cyan-500/30 rounded-lg p-6 hover:border-cyan-500/60 transition-all hover:transform hover:scale-105">
+          <div class="text-5xl mb-4 text-center">✨</div>
+          <h3 class="text-xl font-bold text-cyan-400 mb-3 text-center">Retro Vibes</h3>
+          <p class="text-gray-300 text-sm text-center leading-relaxed">
+            Nostalgic Windows 95 UI meets modern vaporwave aesthetics.
+            Complete with sound effects and animations.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-black/40 backdrop-blur-md border border-green-500/30 rounded-lg p-6 hover:border-green-500/60 transition-all hover:transform hover:scale-105">
+          <div class="text-5xl mb-4 text-center">🎮</div>
+          <h3 class="text-xl font-bold text-green-400 mb-3 text-center">Interactive</h3>
+          <p class="text-gray-300 text-sm text-center leading-relaxed">
+            Drag windows, browse files, use terminal, play with AI.
+            Full desktop experience in your browser.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-black/40 backdrop-blur-md border border-yellow-500/30 rounded-lg p-6 hover:border-yellow-500/60 transition-all hover:transform hover:scale-105">
+          <div class="text-5xl mb-4 text-center">🎨</div>
+          <h3 class="text-xl font-bold text-yellow-400 mb-3 text-center">Customizable</h3>
+          <p class="text-gray-300 text-sm text-center leading-relaxed">
+            Toggle sound effects, switch themes (dark/light), discover easter
+            eggs and hidden features.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-black/40 backdrop-blur-md border border-orange-500/30 rounded-lg p-6 hover:border-orange-500/60 transition-all hover:transform hover:scale-105">
+          <div class="text-5xl mb-4 text-center">📱</div>
+          <h3 class="text-xl font-bold text-orange-400 mb-3 text-center">Mobile Ready</h3>
+          <p class="text-gray-300 text-sm text-center leading-relaxed">
+            Fully responsive design works on desktop, tablet, and mobile.
+            Take Yuki OS anywhere!
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Tokenomics Preview -->
+      <div class="mb-16 bg-black/60 backdrop-blur-md border border-cyan-400/30 rounded-xl p-8 max-w-3xl w-full mx-auto">
+        <h3 class="text-3xl font-bold text-cyan-400 mb-2 text-center">💎 Tokenomics</h3>
+        <p class="text-gray-400 text-sm text-center mb-6">Fair launch, community-driven, 100% transparent</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-6">
+          <div class="bg-black/40 rounded-lg p-4 border border-purple-500/20">
+            <div class="text-gray-400 text-xs mb-2 uppercase tracking-wide">Total Supply</div>
+            <div class="text-white font-bold text-2xl">1B</div>
+            <div class="text-purple-400 text-sm mt-1">$YUKIOS</div>
+          </div>
+          <div class="bg-black/40 rounded-lg p-4 border border-green-500/20">
+            <div class="text-gray-400 text-xs mb-2 uppercase tracking-wide">Tax</div>
+            <div class="text-green-400 font-bold text-2xl">0%</div>
+            <div class="text-gray-400 text-sm mt-1">Buy / Sell</div>
+          </div>
+          <div class="bg-black/40 rounded-lg p-4 border border-orange-500/20">
+            <div class="text-gray-400 text-xs mb-2 uppercase tracking-wide">Liquidity</div>
+            <div class="text-orange-400 font-bold text-2xl">🔥</div>
+            <div class="text-orange-400 text-sm mt-1">BURNED</div>
+          </div>
+          <div class="bg-black/40 rounded-lg p-4 border border-red-500/20">
+            <div class="text-gray-400 text-xs mb-2 uppercase tracking-wide">Mint</div>
+            <div class="text-red-400 font-bold text-2xl">🚫</div>
+            <div class="text-red-400 text-sm mt-1">REVOKED</div>
+          </div>
+        </div>
+        <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
+          <p class="text-gray-300 text-sm text-center">
+            <span class="text-purple-400 font-bold">100% Community Owned</span> •
+            No team tokens • No presale • Fair launch on Pump.fun •
+            Contract verified ✅
+          </p>
+        </div>
+      </div>
+
+      <!-- How to Get Started -->
+      <div class="mb-16 max-w-4xl w-full mx-auto bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-md border border-purple-500/30 rounded-xl p-8">
+        <h3 class="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          🚀 Getting Started
+        </h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="bg-purple-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-purple-400">
+              <span class="text-3xl">1️⃣</span>
+            </div>
+            <h4 class="text-lg font-bold text-purple-400 mb-2">Try the Desktop</h4>
+            <p class="text-gray-300 text-sm">Click "Launch Yuki OS" to experience the interactive desktop environment</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-pink-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-pink-400">
+              <span class="text-3xl">2️⃣</span>
+            </div>
+            <h4 class="text-lg font-bold text-pink-400 mb-2">Get $YUKIOS</h4>
+            <p class="text-gray-300 text-sm">Buy $YUKIOS tokens on Pump.fun using Solana wallet (Phantom, Solflare)</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-cyan-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-cyan-400">
+              <span class="text-3xl">3️⃣</span>
+            </div>
+            <h4 class="text-lg font-bold text-cyan-400 mb-2">Join Community</h4>
+            <p class="text-gray-300 text-sm">Connect with fellow Yuki OS fans on Telegram and Twitter</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Footer Note -->
+      <div class="text-center text-gray-500 text-xs max-w-2xl mx-auto">
+        <p class="mb-2">
+          ⚠️ Cryptocurrency investments carry risk. Do your own research (DYOR) before investing.
+        </p>
+        <p>
+          Yuki OS is a community-driven project. Built with 💜 for retro computing enthusiasts and crypto fans.
+        </p>
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>

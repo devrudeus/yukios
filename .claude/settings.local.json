@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout /t 10)",
+      "Bash(timeout:*)",
+      "Bash(exit 0)",
+      "Bash(start http://localhost:1234)",
+      "Bash(dir \"c:\\\\Users\\\\WINDOWS10\\\\Desktop\\\\kimios-portfolio\\\\public\\\\videos\")",
+      "Bash(dir:*)",
+      "Bash(move:*)",
+      "Bash(ls -la \"c:\\\\Users\\\\WINDOWS10\\\\Desktop\\\\kimios-portfolio\\\\public\"\" | grep -i \"mp4 \")",
+      "Bash(ffmpeg:*)",
+      "Bash(ffprobe:*)",
+      "Bash(findstr:*)",
+      "Bash(npx astro check:*)",
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(ls:*)",
+      "Bash(start http://localhost:1234/yuki-os)"
+    ]
+  }
+}

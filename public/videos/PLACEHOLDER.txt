@@ -1,0 +1,46 @@
+# Video Placeholder
+
+Video file `Make_cinematic_style.mp4` belum tersedia.
+
+## Cara Menambahkan Video:
+
+1. **Siapkan video Anda** dengan spesifikasi:
+   - Format: MP4 (H.264)
+   - Resolusi: 1920x1080 atau 1280x720
+   - Aspect Ratio: 16:9
+   - File Size: < 10MB
+
+2. **Rename file video** menjadi:
+   ```
+   Make_cinematic_style.mp4
+   ```
+
+3. **Copy file** ke folder ini:
+   ```
+   public/videos/Make_cinematic_style.mp4
+   ```
+
+4. **Refresh browser** (Ctrl+Shift+R)
+
+## Alternatif: Gunakan Video URL
+
+Jika video Anda ada di URL online, edit `src/pages/index.astro` baris 38:
+
+```astro
+<!-- Ganti path lokal dengan URL -->
+<source src="https://your-video-url.com/video.mp4" type="video/mp4" />
+```
+
+## Sementara Waktu
+
+Hero section akan menampilkan placeholder dengan semua cinematic effects tetap aktif:
+- ✅ Holographic overlay
+- ✅ Gradient overlays
+- ✅ Scanline effects
+- ✅ All animations
+- ⏳ Video (waiting for file)
+
+---
+
+**Status**: Waiting for video file
+**Path**: /public/videos/Make_cinematic_style.mp4

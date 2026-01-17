@@ -1,0 +1,94 @@
+---
+import { SOCIAL_LINKS } from '@/consts'
+import SocialIcons from './SocialIcons.astro'
+---
+
+<footer class="border-border/50 border-t py-12 bg-black/50 backdrop-blur-sm">
+  <!-- Developed By Section -->
+  <div class="mx-auto max-w-7xl px-4 mb-12">
+    <h3 class="text-center text-2xl md:text-3xl font-bold mb-8 text-gray-300">
+      Developed by
+    </h3>
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+      <!-- Developer 1: jerry_yu -->
+      <div class="flex flex-col items-center gap-3 group">
+        <div class="relative">
+          <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-purple-500/30 group-hover:border-purple-500/60 transition-all duration-300 group-hover:scale-110">
+            <img
+              src="/jeffyyu.webp"
+              alt="jerry_yu"
+              class="w-full h-full object-cover bg-gray-900"
+            />
+          </div>
+          <div class="absolute inset-0 rounded-full bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <span class="text-gray-300 font-mono font-semibold text-sm md:text-base">
+          jerry_yu ⭐
+        </span>
+      </div>
+
+      <!-- Developer 2: GNON Labs -->
+      <a href="https://x.com/GnonLabs" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 group cursor-pointer">
+        <div class="relative">
+          <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-pink-500/30 group-hover:border-pink-500/60 transition-all duration-300 group-hover:scale-110">
+            <img
+              src="/gnon.webp"
+              alt="GNON Labs"
+              class="w-full h-full object-cover bg-gray-900"
+            />
+          </div>
+          <div class="absolute inset-0 rounded-full bg-pink-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <span class="text-gray-300 font-mono font-semibold text-sm md:text-base flex items-center gap-2">
+          GNON Labs
+          <span class="text-cyan-400">▲</span>
+        </span>
+      </a>
+
+      <!-- Developer 3: rudeuscapital -->
+      <a href="https://x.com/rudeuscapital_" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 group cursor-pointer">
+        <div class="relative">
+          <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-cyan-500/30 group-hover:border-cyan-500/60 transition-all duration-300 group-hover:scale-110">
+            <img
+              src="/rudeus.jpeg"
+              alt="rudeuscapital"
+              class="w-full h-full object-cover bg-gray-900"
+            />
+          </div>
+          <div class="absolute inset-0 rounded-full bg-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <span class="text-gray-300 font-mono font-semibold text-sm md:text-base">
+          rudeuscapital
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Original Footer Content -->
+  <div
+    class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-y-4 px-4 sm:flex-row sm:justify-between lg:px-8 border-t border-gray-800/50 pt-8"
+  >
+    <div class="flex flex-col items-center gap-3 sm:items-start">
+      <div class="flex items-center gap-2">
+        <img
+          src="/LOGO.png"
+          alt="Yuki OS Logo"
+          class="h-8 w-auto object-contain"
+          style="filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.5)) drop-shadow(0 0 10px rgba(236, 72, 153, 0.3));"
+        />
+        <span class="text-foreground text-sm font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+          Yuki OS
+        </span>
+      </div>
+      <span class="text-muted-foreground text-xs">
+        &copy; {new Date().getFullYear()} Yuki OS - Kawaii Cyberdeck. All rights reserved.
+      </span>
+    </div>
+    <div class="flex flex-col items-center gap-3 sm:items-end">
+      <SocialIcons links={SOCIAL_LINKS} />
+      <span class="text-muted-foreground text-xs">
+        Built with modern technologies
+      </span>
+    </div>
+  </div>
+</footer>
