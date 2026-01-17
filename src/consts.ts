@@ -28,16 +28,8 @@ export const NAV_LINKS: SocialLink[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: 'https://pump.fun/coin/J8ejmLRkj3uni4nKjuh2hGtXDKKdJHVxb4JCN8WUpump',
-    label: 'GitHub',
-  },
-  {
-    href: 'https://pump.fun/coin/J8ejmLRkj3uni4nKjuh2hGtXDKKdJHVxb4JCN8WUpump',
+    href: 'https://twitter.com/i/communities/2012546612812525953',
     label: 'Twitter',
-  },
-  {
-    href: 'https://pump.fun/coin/J8ejmLRkj3uni4nKjuh2hGtXDKKdJHVxb4JCN8WUpump',
-    label: 'RSS',
   },
 ]
 
