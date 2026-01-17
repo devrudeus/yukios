@@ -1531,8 +1531,9 @@ import Layout from '@/layouts/Layout.astro'
   const startMenu = document.getElementById('start-menu')
   let isStartMenuOpen = false
 
-  startButton?.addEventListener('click', (e) => {
+  const toggleStartMenu = (e: Event) => {
     e.stopPropagation()
+    e.preventDefault()
     isStartMenuOpen = !isStartMenuOpen
 
     if (startMenu) {
@@ -1542,10 +1543,13 @@ import Layout from '@/layouts/Layout.astro'
         startMenu.classList.add('hidden')
       }
     }
-  })
+  }
 
-  // Close start menu when clicking outside
-  document.addEventListener('click', (e) => {
+  startButton?.addEventListener('click', toggleStartMenu)
+  startButton?.addEventListener('touchend', toggleStartMenu)
+
+  // Close start menu when clicking/touching outside
+  const closeStartMenuOutside = (e: Event) => {
     if (startMenu && isStartMenuOpen) {
       const target = e.target as HTMLElement
       if (!startMenu.contains(target) && target !== startButton) {
@@ -1553,12 +1557,15 @@ import Layout from '@/layouts/Layout.astro'
         isStartMenuOpen = false
       }
     }
-  })
+  }
+
+  document.addEventListener('click', closeStartMenuOutside)
+  document.addEventListener('touchend', closeStartMenuOutside)
 
   // 🎯 START MENU ACTIONS
   const startMenuItems = document.querySelectorAll('.start-menu-item')
   startMenuItems.forEach(item => {
-    item.addEventListener('click', () => {
+    const handleStartMenuAction = () => {
       const action = item.getAttribute('data-action')
 
       // Close start menu
@@ -1594,6 +1601,12 @@ import Layout from '@/layouts/Layout.astro'
           showSettingsDialog()
           break
       }
+    }
+
+    item.addEventListener('click', handleStartMenuAction)
+    item.addEventListener('touchend', (e) => {
+      e.preventDefault()
+      handleStartMenuAction()
     })
   })
 
@@ -1641,7 +1654,7 @@ Coming Soon:
   // Open Window
   const desktopIcons = document.querySelectorAll('.desktop-icon')
   desktopIcons.forEach(icon => {
-    icon.addEventListener('click', () => {
+    const openWindowHandler = () => {
       const windowName = icon.getAttribute('data-window')
       const windowEl = document.getElementById(`window-${windowName}`)
 
@@ -1652,6 +1665,15 @@ Coming Soon:
         // Play click sound (if available)
         playSound('click')
       }
+    }
+
+    // Desktop click
+    icon.addEventListener('click', openWindowHandler)
+
+    // Mobile touch
+    icon.addEventListener('touchend', (e) => {
+      e.preventDefault()
+      openWindowHandler()
     })
   })
 
@@ -2081,10 +2103,16 @@ Coming Soon:
 
     // Color selection
     colorButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
+      const selectColor = () => {
         colorButtons.forEach(b => b.classList.remove('active'))
         btn.classList.add('active')
         paintColor = btn.getAttribute('data-color') || '#ffffff'
+      }
+
+      btn.addEventListener('click', selectColor)
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault()
+        selectColor()
       })
     })
 
@@ -2136,20 +2164,32 @@ Coming Soon:
     })
 
     // Clear canvas
-    clearCanvasBtn?.addEventListener('click', () => {
+    const clearCanvas = () => {
       if (paintCtx) {
         paintCtx.clearRect(0, 0, paintCanvas!.width, paintCanvas!.height)
         playSound('click')
       }
+    }
+
+    clearCanvasBtn?.addEventListener('click', clearCanvas)
+    clearCanvasBtn?.addEventListener('touchend', (e) => {
+      e.preventDefault()
+      clearCanvas()
     })
 
     // Download canvas
-    downloadCanvasBtn?.addEventListener('click', () => {
+    const downloadCanvas = () => {
       const link = document.createElement('a')
       link.download = 'yuki-paint.png'
       link.href = paintCanvas!.toDataURL()
       link.click()
       playSound('click')
+    }
+
+    downloadCanvasBtn?.addEventListener('click', downloadCanvas)
+    downloadCanvasBtn?.addEventListener('touchend', (e) => {
+      e.preventDefault()
+      downloadCanvas()
     })
   }
 
